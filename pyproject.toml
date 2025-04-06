@@ -1,0 +1,53 @@
+[project]
+name = "saibyo"
+version = "v0.0.1"
+description = "Base for a project"
+dependencies = [
+    "ipykernel>=6.29.5",
+    "torch>=2.6.0",
+    "torchvision>=0.21.0",
+    "torchaudio>=2.6.0",
+    "opencv-python>=4.11.0.86",
+    "matplotlib>=3.10.0",
+    "av>=14.1.0",
+    "pymediainfo>=6.1.0",
+    "tqdm>=4.67.1",
+    "pydantic>=2.10.6",
+    "fire>=0.7.0",
+    "pydantic-settings>=2.7.1",
+    "attrs>=25.3.0",
+    "ffmpeg-python>=0.2.0",
+]
+
+requires-python = "==3.10.*"
+readme = "README.md"
+[[project.authors]]
+name = "Alvaro Rodriguez"
+
+[build-system]
+requires = [ "setuptools>=61", "wheel",]
+build-backend = "setuptools.build_meta"
+
+[project.license]
+text = "EULA"
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.scripts]
+fix = "python3 -m ruff check src --fix"
+lint = "python3 -m ruff check src"
+_next-call = "echo '-------------- NEXT CALL --------------'"
+
+[tool.ruff.lint]
+select = [ "E", "W", "F", "C90", "I", "N", "D", "UP", "YTT", "ANN", "ASYNC", "S", "BLE", "FBT", "B", "A", "COM", "C4", "DTZ", "T10", "DJ", "EM", "EXE", "FA", "ISC", "ICN", "G", "RSE", "RET", "SLF", "SLOT", "SIM", "TID", "TCH", "INT", "ARG", "PTH", "TD", "FIX", "ERA", "PD", "PGH", "PL", "TRY", "FLY", "NPY", "AIR", "PERF", "RUF", "Q",]
+ignore = [ "ANN101", "D100", "D104", "D211", "D213", "PD013", "COM812", "ISC001", "D212", "D203", "D205", "D200", "D210", "D401", "G004", "ANN401", "PTH110", "PTH123", "PTH103", "S603", "TRY400", "DTZ007", "BLE001", "PTH207", "S108", "A002"]
+
+[tool.ruff.lint.per-file-ignores]
+"./tests/**" = [ "D101", "D102", "ANN001", "ANN201", "ANN202", "E501", "S311", "ANN205", "PLR2004", "FBT002", "RET503", "B904"]
+
+[tool.pdm.scripts.test.env]
+ENV = "test"
+
+[tool.pdm.scripts.booster]
+cmd = "python3 main.py booster"
