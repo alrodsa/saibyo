@@ -49,5 +49,5 @@ ignore = [ "ANN101", "D100", "D104", "D211", "D213", "PD013", "COM812", "ISC001"
 [tool.pdm.scripts.test.env]
 ENV = "test"
 
-[tool.pdm.scripts.booster]
-cmd = "python3 main.py booster"
+[tool.pdm.scripts.interpolate]
+cmd = "python3 main.py interpolate"
