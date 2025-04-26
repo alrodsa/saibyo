@@ -25,6 +25,7 @@ class InterpolatorConf(BaseSettings):
     """
 
     batch_size: int = Field(default=1, gt=0)
+    num_workers: int = Field(default=4, ge=0)
     exp: int = Field(default=1, gt=0)
 
     model_config = SettingsConfigDict(env_prefix="SAIBYO_INTERPOLATOR_")

@@ -5,7 +5,6 @@ __pycache__/
 
 # Data directory
 saibyo-data/
-mvp.ipynb
 
 # PDM
 __pypackages__/

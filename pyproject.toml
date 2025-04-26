@@ -41,7 +41,7 @@ _next-call = "echo '-------------- NEXT CALL --------------'"
 
 [tool.ruff.lint]
 select = [ "E", "W", "F", "C90", "I", "N", "D", "UP", "YTT", "ANN", "ASYNC", "S", "BLE", "FBT", "B", "A", "COM", "C4", "DTZ", "T10", "DJ", "EM", "EXE", "FA", "ISC", "ICN", "G", "RSE", "RET", "SLF", "SLOT", "SIM", "TID", "TCH", "INT", "ARG", "PTH", "TD", "FIX", "ERA", "PD", "PGH", "PL", "TRY", "FLY", "NPY", "AIR", "PERF", "RUF", "Q",]
-ignore = [ "ANN101", "D100", "D104", "D211", "D213", "PD013", "COM812", "ISC001", "D212", "D203", "D205", "D200", "D210", "D401", "G004", "ANN401", "PTH110", "PTH123", "PTH103", "S603", "TRY400", "DTZ007", "BLE001", "PTH207", "S108", "A002"]
+ignore = [ "ANN101", "D100", "D104", "D211", "D213", "PD013", "COM812", "ISC001", "D212", "D203", "D205", "D200", "D210", "D401", "G004", "ANN401", "PTH110", "PTH123", "PTH103", "S603", "TRY400", "DTZ007", "BLE001", "PTH207", "S108", "A002", "PLR0913", "FBT001", "FBT002", "N812"]
 
 [tool.ruff.lint.per-file-ignores]
 "./tests/**" = [ "D101", "D102", "ANN001", "ANN201", "ANN202", "E501", "S311", "ANN205", "PLR2004", "FBT002", "RET503", "B904"]
