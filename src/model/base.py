@@ -9,32 +9,7 @@ class BaseInterpolationModel(ABC):
     """
 
     @abstractmethod
-    def load(self, path: str) -> "BaseInterpolationModel":
-        """
-        Load the model weights from the specified path.
-
-        Parameters
-        ----------
-        path : str
-            The path to the model weights file.
-
-        Returns
-        -------
-        BaseInterpolationModel
-            The current instance of the BaseInterpolationModel class.
-
-        """
-        ...
+    def load(self, path: str) -> "BaseInterpolationModel": ...  # noqa: D102
 
     @abstractmethod
-    def inference(self) -> torch.Tensor:
-        """
-        Perform inference on the input images.
-
-        Returns
-        -------
-        torch.Tensor
-            The interpolated image.
-
-        """
-        ...
+    def inference(self) -> torch.Tensor: ...  # noqa: D102

@@ -13,7 +13,7 @@ from tqdm import tqdm
 from src.conf.conf import SaibyoConf
 from src.constants.app import APP_NAME, WEIGHTS_DIR
 from src.data.dataset import FramePairDataset
-from src.model.model import RifeModel
+from model.rife import RifeModel
 from src.utils.image import pad_to_multiple
 
 
