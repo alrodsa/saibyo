@@ -15,15 +15,15 @@ class TestFramePairDataset(TestCase):
         Set up the test case.
         """
         self._tmp_dir = tempfile.TemporaryDirectory()
-        self._input_dir = os.path.join(self._tmp_dir.name, "inputs")
-        self._output_dir = os.path.join(self._tmp_dir.name, "outputs")
+        self._input_dir = Path(self._tmp_dir.name) / "inputs"
+        self._output_dir = Path(self._tmp_dir.name) / "outputs"
         Path(self._input_dir).mkdir(parents=True, exist_ok=True)
         Path(self._output_dir).mkdir(parents=True, exist_ok=True)
 
         # Create random images for testing
         save_random_images(
-            save_dir=self._input_dir,
-            num_frames=4,
+            save_dir=str(self._input_dir),
+            n_images=4,
             width=64,
             height=64
         )
@@ -40,7 +40,7 @@ class TestFramePairDataset(TestCase):
         """
         from src.data.dataset import FramePairDataset
 
-        dataset = FramePairDataset(input_folder=self._input_dir)
+        dataset = FramePairDataset(input_folder=str(self._input_dir))
         files = dataset._files
         self.assertEqual(len(files), 4)
         self.assertTrue(all(file.endswith(f".{IMAGE_EXTENSION}") for file in files))
@@ -51,7 +51,7 @@ class TestFramePairDataset(TestCase):
         """
         from src.data.dataset import FramePairDataset
 
-        dataset = FramePairDataset(input_folder=self._input_dir)
+        dataset = FramePairDataset(input_folder=str(self._input_dir))
         pairs = dataset._pairs
         self.assertEqual(len(pairs), 3)
         self.assertTrue(all(isinstance(pair, tuple) and len(pair) == 2 for pair in pairs))
@@ -63,7 +63,7 @@ class TestFramePairDataset(TestCase):
         """
         from src.data.dataset import FramePairDataset
 
-        dataset = FramePairDataset(input_folder=self._input_dir)
+        dataset = FramePairDataset(input_folder=str(self._input_dir))
         tensor = dataset._to_tensor(dataset._files[0])
         self.assertEqual(tensor.shape, (3, 64, 64))
         self.assertTrue(tensor.dtype == torch.float32)
@@ -74,7 +74,7 @@ class TestFramePairDataset(TestCase):
         """
         from src.data.dataset import FramePairDataset
 
-        dataset = FramePairDataset(input_folder=self._input_dir)
+        dataset = FramePairDataset(input_folder=str(self._input_dir))
         self.assertEqual(len(dataset), 3)
 
     def test_getitem(self):
@@ -83,7 +83,7 @@ class TestFramePairDataset(TestCase):
         """
         from src.data.dataset import FramePairDataset
 
-        dataset = FramePairDataset(input_folder=self._input_dir)
+        dataset = FramePairDataset(input_folder=str(self._input_dir))
         item = dataset[0]
         self.assertEqual(len(item), 2)
         self.assertTrue(all(isinstance(path, str) for path in item["paths"]))
