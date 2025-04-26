@@ -56,7 +56,7 @@ def random_images(
 
 def save_random_images(
     save_dir: str,
-    num_frames: int = 4,
+    n_images: int = 4,
     width: int = 64,
     height: int = 64,
 ) -> None:
@@ -67,15 +67,15 @@ def save_random_images(
     ----------
     save_dir : str
         The output directory to save the images.
-    num_frames : int
-        The number of frames to create.
+    n_images : int
+        The number of images to create.
     width : int
-        The width of the frames.
+        The width of the image.
     height : int
-        The height of the frames.
+        The height of the image.
 
     """
     Path(save_dir).mkdir(parents=True, exist_ok=True)
 
-    for i, image in enumerate(random_images(num_frames, width, height)):
+    for i, image in enumerate(random_images(n_images, width, height)):
         image.save(Path(save_dir) / f"image_{i}.{IMAGE_EXTENSION}")
