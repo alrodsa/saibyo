@@ -1,58 +1,79 @@
-name: CI Saibyo LIbrary - Python PDM
+name: CI Saibyo Library - Python PDM
 
 on:
   push:
     branches: [ develop ]
   pull_request:
-    branches: [ develop ]
+    branches: [ "**" ]
 
 jobs:
-  build:
+  lint:
+    name: Lint code with Ruff
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-    - name: Install PDM
-      run: |
-        pip install pdm
-        pdm config python.use_venv true
-        pdm install --dev
+      - name: Install PDM
+        run: |
+          pip install pdm
+          pdm config python.use_venv true
+          pdm install --dev
 
-    - name: Run Lint with Ruff
-      id: lint
-      continue-on-error: true
-      run: |
-        echo "🧹 Running Ruff Lint..."
-        pdm run lint
+      - name: Run Ruff Lint
+        run: |
+          pdm run lint
 
-    - name: Comment on PR if Lint Fails
-      if: steps.lint.outcome == 'failure'
-      uses: actions/github-script@v7
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        script: |
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: "⚠️ **Lint check has failed!** Please fix the ruff issues before merging."
-          })
+  test:
+    name: Run Tests with Coverage
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
 
-    - name: Run Tests with Coverage
-      run: |
-        echo "🧪 Running Tests..."
-        pdm run test
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-    - name: Upload coverage report
-      uses: actions/upload-artifact@v4
-      with:
-        name: coverage-report
-        path: coverage.xml
-        if-no-files-found: ignore
+      - name: Install PDM
+        run: |
+          pip install pdm
+          pdm config python.use_venv true
+          pdm install --dev
+
+      - name: Run Tests
+        run: |
+          pdm run test
+
+      - name: Upload Coverage to Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: coverage.xml
+
+  autofix:
+    name: Attempt Auto-Fix with Ruff
+    runs-on: ubuntu-latest
+    if: failure() && needs.lint.result == 'failure'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install PDM
+        run: |
+          pip install pdm
+          pdm config python.use_venv true
+          pdm install --dev
+
+      - name: Attempt Ruff Auto-Fix
+        run: |
+          pdm run fix
