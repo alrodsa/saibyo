@@ -5,6 +5,17 @@ from src.core.interpolator import Interpolator
 
 
 def interpolate(input_folder: str, output_folder: str) -> None:
+    """
+    Interpolates the data in the input folder and saves it to the output folder.
+
+    Parameters
+    ----------
+    input_folder : str
+        The path to the input folder containing the data to be interpolated.
+    output_folder : str
+        The path to the output folder where the interpolated data will be saved.
+
+    """
     conf = configure(APP_NAME, ROOT_DIR, SaibyoConf)
 
     Interpolator(conf).run(

@@ -1,6 +1,5 @@
-from functools import cached_property
 import logging
-import os
+from functools import cached_property
 from pathlib import Path
 
 import cv2
@@ -10,15 +9,41 @@ from attrs import define, field
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
+from model.rife import RifeModel
 from src.conf.conf import SaibyoConf
 from src.constants.app import APP_NAME, WEIGHTS_DIR
 from src.data.dataset import FramePairDataset
-from model.rife import RifeModel
 from src.utils.image import pad_to_multiple
 
 
 @define
 class Interpolator:
+    """
+    Class to interpolate frames using the RIFE model.
+    The class is initialized with a configuration object and the device
+    to use for inference. The class loads the interpolation model and provides
+    a method to run the interpolation on a given input folder containing
+    original frames and save the interpolated frames to a given output folder.
+
+    Parameters
+    ----------
+    _conf : SaibyoConf
+        The configuration object containing the settings for the interpolator.
+    _logger : logging.Logger
+        The logger object to log messages.
+    _model : RifeModel
+        The RIFE model object used for interpolation.
+    _device : torch.device
+        The device to use for inference (CPU or GPU).
+
+    Properties
+    ----------
+    _n_middle_frames : int
+        The number of middle frames to interpolate between two original frames.
+        This is calculated as 2 raised to the power of the `exp` attribute
+        in the configuration object.
+
+    """
 
     _conf: SaibyoConf
 
