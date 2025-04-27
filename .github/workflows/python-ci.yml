@@ -26,6 +26,7 @@ jobs:
 
       - name: Run Ruff Lint
         run: |
+          echo "🔍 Running Lint..."
           pdm run lint
 
   test:
@@ -48,32 +49,6 @@ jobs:
 
       - name: Run Tests
         run: |
+          echo "🧪 Running Tests..."
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
           pdm run test
-
-      - name: Upload Coverage to Coveralls
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: coverage.xml
-
-  autofix:
-    name: Attempt Auto-Fix with Ruff
-    runs-on: ubuntu-latest
-    if: failure() && needs.lint.result == 'failure'
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Install PDM
-        run: |
-          pip install pdm
-          pdm config python.use_venv true
-          pdm install --dev
-
-      - name: Attempt Ruff Auto-Fix
-        run: |
-          pdm run fix
