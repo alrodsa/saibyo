@@ -8,7 +8,6 @@ saibyo-data/
 
 # PDM
 __pypackages__/
-pdm.lock
 
 # Virtual environment
 .venv/
@@ -67,5 +66,4 @@ dist/
 # Local tooling
 *.sqlite
 *.db
-*.lock
 .pdm-python
