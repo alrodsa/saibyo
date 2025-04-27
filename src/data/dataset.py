@@ -1,4 +1,3 @@
-import glob
 from functools import cached_property
 from pathlib import Path
 
@@ -13,6 +12,21 @@ from src.constants.dataset import IMAGE_EXTENSION
 
 @define
 class FramePairDataset(Dataset):
+    """
+    Dataset class for loading pairs of images from a folder.
+    This class is used to load pairs of images from a folder and return them
+    as a dictionary containing the images and their paths. The images are
+    transformed to tensors using the specified transform.
+
+    Attributes
+    ----------
+    input_folder : str
+        The folder containing the images.
+    transform : transforms.Compose
+        The transform to apply to the images.
+
+    """
+
     input_folder: str
     transform: transforms.Compose = field(
         default=transforms.Compose([transforms.ToTensor()])

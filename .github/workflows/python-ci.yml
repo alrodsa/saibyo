@@ -1,0 +1,53 @@
+name: CI - Python PDM
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  lint:
+    name: Lint code with Ruff
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install PDM
+        run: |
+          pip install pdm
+          pdm config python.use_venv true
+          pdm install --dev
+
+      - name: Run Ruff Lint
+        run: |
+          echo "🔍 Running Lint..."
+          pdm run lint
+
+  test:
+    name: Run Tests with Coverage
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install PDM
+        run: |
+          pip install pdm
+          pdm config python.use_venv true
+          pdm install --dev
+
+      - name: Run Tests
+        run: |
+          echo "🧪 Running Tests..."
+          pdm run test
