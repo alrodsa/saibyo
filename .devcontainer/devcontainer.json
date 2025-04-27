@@ -34,9 +34,10 @@
           "tamasfe.even-better-toml",
           "vscode-icons-team.vscode-icons",
           "charliermarsh.ruff",
-          "hashicorp.terraform",
           "ms-toolsai.jupyter",
-          "pulumi.pulumi-lsp-client"
+          "ms-python.python",
+          "ms-python.vscode-pylance",
+          "ms-vscode.test-adapter-converter"
         ],
         "settings": {
           "files.exclude": {
