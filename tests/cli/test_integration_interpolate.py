@@ -4,7 +4,6 @@ from unittest import TestCase
 
 from src.conf.conf import InterpolatorConf, SaibyoConf
 from src.constants.dataset import IMAGE_EXTENSION
-from src.core.interpolator import Interpolator
 from tests.factories.images import save_random_images
 
 
