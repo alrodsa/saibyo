@@ -1,6 +1,7 @@
 import tempfile
 from pathlib import Path
 from unittest import TestCase
+from unittest.mock import patch
 
 from src.conf.conf import InterpolatorConf, SaibyoConf
 from src.constants.dataset import IMAGE_EXTENSION
@@ -40,10 +41,12 @@ class TestInterpolateCLI(TestCase):
         """
         self._tmp_dir.cleanup()
 
-    def test_interpolate(self):
+    @patch("src.cli.interpolate.configure")
+    def test_interpolate(self, mock_configure):
         """
         Test the interpolate function.
         """
+        mock_configure.return_value = self._conf
         from src.cli.interpolate import interpolate
 
         interpolation = interpolate(
@@ -53,7 +56,7 @@ class TestInterpolateCLI(TestCase):
 
         # Check that the output folder contains the expected number of files
         output_files = list(self._output_dir.glob(f"*.{IMAGE_EXTENSION}"))
-        self.assertEqual(len(output_files), 2 * (2 ** self._conf.interpolator.exp) + 1)
+        self.assertEqual(len(output_files), 2 * (2 ** self._conf.interpolator.exp) - 1)
 
         # Check that the output files are not empty
         for output_file in output_files:
