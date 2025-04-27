@@ -67,3 +67,12 @@ dist/
 *.sqlite
 *.db
 .pdm-python
+
+# Do not ignore libs
+!libs/
+!libs/base/
+!libs/base/logs/
+!libs/base/logs/**
+**/__pycache__/
+**/*.pyc
+**/*.pyo

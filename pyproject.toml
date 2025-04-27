@@ -37,9 +37,6 @@ distribution = true
 [tool.pdm.dev-dependencies]
 test = [ "pytest>=7.4.4", "pytest-cov>=4.1.0", "faker>=24.8.0", "httpx>=0.27.0",]
 format = [ "ruff>=0.1.14",]
-dev = [
-    "-e file:///workspaces/saibyo/libs#egg=libs",
-]
 
 [tool.pdm.scripts]
 fix = "python3 -m ruff check src --fix"
