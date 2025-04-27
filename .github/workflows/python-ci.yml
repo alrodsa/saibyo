@@ -50,5 +50,4 @@ jobs:
       - name: Run Tests
         run: |
           echo "🧪 Running Tests..."
-          export PYTHONPATH=$PYTHONPATH:$(pwd)
           pdm run test
