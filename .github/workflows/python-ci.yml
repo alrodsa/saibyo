@@ -1,4 +1,4 @@
-name: CI Saibyo Library - Python PDM
+name: CI - Python PDM
 
 on:
   push:
