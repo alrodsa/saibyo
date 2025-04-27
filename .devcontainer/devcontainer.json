@@ -25,19 +25,20 @@
     "customizations": {
       "vscode": {
         "extensions": [
-          "DavidAnson.vscode-markdownlint",
-          "eamodio.gitlens",
-          "GitHub.copilot",
-          "GitHub.copilot-chat",
-          "ms-python.python",
-          "ms-azuretools.vscode-docker",
-          "tamasfe.even-better-toml",
-          "vscode-icons-team.vscode-icons",
-          "charliermarsh.ruff",
-          "ms-toolsai.jupyter",
-          "ms-python.python",
-          "ms-python.vscode-pylance",
-          "ms-vscode.test-adapter-converter"
+            "DavidAnson.vscode-markdownlint",
+            "eamodio.gitlens",
+            "GitHub.copilot",
+            "GitHub.copilot-chat",
+            "ms-python.python",
+            "ms-azuretools.vscode-docker",
+            "tamasfe.even-better-toml",
+            "vscode-icons-team.vscode-icons",
+            "charliermarsh.ruff",
+            "ms-toolsai.jupyter",
+            "ms-python.python",
+            "ms-python.vscode-pylance",
+            "ms-vscode.test-adapter-converter",
+            "github.vscode-github-actions"
         ],
         "settings": {
           "files.exclude": {
@@ -45,7 +46,7 @@
             "**/__pycache__": true,
             "**/__pypackages__": true,
             "**/*.egg-info": true,
-            "**/.github": true,
+            "**/.github": false,
             "**/.coverage": true,
             "**/.idea": true,
             "**/.pytest_cache": true,

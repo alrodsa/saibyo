@@ -1,0 +1,58 @@
+name: CI Saibyo LIbrary - Python PDM
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install PDM
+      run: |
+        pip install pdm
+        pdm config python.use_venv true
+        pdm install --dev
+
+    - name: Run Lint with Ruff
+      id: lint
+      continue-on-error: true
+      run: |
+        echo "🧹 Running Ruff Lint..."
+        pdm run lint
+
+    - name: Comment on PR if Lint Fails
+      if: steps.lint.outcome == 'failure'
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: "⚠️ **Lint check has failed!** Please fix the ruff issues before merging."
+          })
+
+    - name: Run Tests with Coverage
+      run: |
+        echo "🧪 Running Tests..."
+        pdm run test
+
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-report
+        path: coverage.xml
+        if-no-files-found: ignore
