@@ -1,6 +1,6 @@
 [project]
 name = "saibyo"
-version = "0.0.1"
+version = "0.1.0"
 description = "Base for a project"
 dependencies = [
     "ipykernel>=6.29.5",
