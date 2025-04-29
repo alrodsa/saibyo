@@ -20,5 +20,5 @@ jobs:
       - name: Run release-please
         uses: googleapis/release-please-action@v4
         with:
-          release-type: python
-
+            release-type: python
+            target-branch: develop
