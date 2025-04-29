@@ -1,0 +1,20 @@
+{
+    "release-type": "python",
+    "package-name": "saibyo",
+    "include-component-in-tag": false,
+    "changelog-path": "CHANGELOG.md",
+    "version-file": "src/__init__.py",
+    "version-files": [
+      {
+        "path": "src/__init__.py",
+        "search": "__version__ = \"(.*)\""
+      },
+      {
+        "path": "pyproject.toml",
+        "search": "version = \"(.*)\""
+      }
+    ],
+    "bump-minor-pre-major": true,
+    "separate-pull-requests": false,
+    "draft": false
+  }
