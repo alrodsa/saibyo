@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - develop
+  pull_request:
+    branches:
+      - develop
 
 jobs:
   release:
@@ -15,7 +18,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run release-please
-        uses: google-github-actions/release-please-action@v4
+        uses: googleapis/release-please-action@v4
         with:
-          release-type: python
-          package-name: saibyo
+            token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+            release-type: python
+            target-branch: develop
