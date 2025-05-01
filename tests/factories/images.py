@@ -3,7 +3,7 @@ from pathlib import Path
 import torch
 from PIL import Image
 
-from src.constants.dataset import IMAGE_EXTENSION
+from saibyo.constants.dataset import IMAGE_EXTENSION
 
 
 def random_image(width: int = 64, height: int = 64) -> Image.Image:

@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import torch
 
-from src.utils.image import pad_to_multiple
+from saibyo.utils.image import pad_to_multiple
 
 
 class TestPadToMultiple(TestCase):

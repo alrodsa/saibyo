@@ -7,7 +7,7 @@ from attrs import define, field
 from torch.utils.data import Dataset
 from torchvision import transforms
 
-from src.constants.dataset import IMAGE_EXTENSION
+from saibyo.constants.dataset import IMAGE_EXTENSION
 
 
 @define

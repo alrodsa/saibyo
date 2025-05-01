@@ -3,10 +3,10 @@
   "package-name": "saibyo",
   "include-component-in-tag": false,
   "changelog-path": "CHANGELOG.md",
-  "version-file": "src/__init__.py",
+  "version-file": "saibyo/__init__.py",
   "version-files": [
     {
-      "path": "src/__init__.py",
+      "path": "saibyo/__init__.py",
       "search": "__version__ = \"(.*)\""
     },
     {

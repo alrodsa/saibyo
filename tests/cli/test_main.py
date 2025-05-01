@@ -1,16 +1,14 @@
-import sys
-import unittest
-from unittest import mock
+from unittest import TestCase, mock
 from unittest.mock import patch
 
-from src.cli.main import main
+from saibyo.cli.main import main
 
 
-class TestMainCLI(unittest.TestCase):
+class TestMainCLI(TestCase):
 
-    @patch("src.cli.interpolate.interpolate", return_value=None)
+    @patch("saibyo.cli.interpolate.interpolate", return_value=None)
     @patch("sys.argv", ["main.py", "interpolate", "input", "output"])
-    @mock.patch("src.cli.main.fire.Fire")
+    @mock.patch("saibyo.cli.main.fire.Fire")
     def test_interpolate_command_called(self, mock_interpolate, _):
         main()
         mock_interpolate.assert_called_once()

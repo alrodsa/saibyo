@@ -22,5 +22,3 @@ jobs:
         with:
             config-file: .release-please-config.json
             token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
-            release-type: python
-            target-branch: develop
