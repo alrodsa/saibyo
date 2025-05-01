@@ -16,5 +16,6 @@
     ],
     "bump-minor-pre-major": true,
     "separate-pull-requests": false,
-    "draft": false
+    "draft": false,
+    "pull-request-branch-name": "release-saibyo-${version}"
   }
