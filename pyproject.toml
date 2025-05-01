@@ -65,3 +65,8 @@ ENV = "test"
 
 [tool.pdm.scripts.interpolate]
 cmd = "python3 main.py interpolate"
+
+[dependency-groups]
+dev = [
+    "twine>=6.1.0",
+]
