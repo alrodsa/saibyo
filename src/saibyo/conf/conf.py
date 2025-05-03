@@ -1,7 +1,7 @@
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from saibyo.libs.base.conf.schema import Conf
+from saibyo.base.conf.schema import Conf
 
 
 class InterpolatorConf(BaseSettings):
