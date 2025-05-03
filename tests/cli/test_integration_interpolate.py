@@ -3,8 +3,8 @@ from pathlib import Path
 from unittest import TestCase
 from unittest.mock import patch
 
-from src.conf.conf import InterpolatorConf, SaibyoConf
-from src.constants.dataset import IMAGE_EXTENSION
+from saibyo.conf.conf import InterpolatorConf, SaibyoConf
+from saibyo.constants.dataset import IMAGE_EXTENSION
 from tests.factories.images import save_random_images
 
 
@@ -41,13 +41,13 @@ class TestInterpolateCLI(TestCase):
         """
         self._tmp_dir.cleanup()
 
-    @patch("src.cli.interpolate.configure")
+    @patch("saibyo.cli.interpolate.configure")
     def test_interpolate(self, mock_configure):
         """
         Test the interpolate function.
         """
         mock_configure.return_value = self._conf
-        from src.cli.interpolate import interpolate
+        from saibyo.cli.interpolate import interpolate
 
         interpolation = interpolate(
             input_folder=str(self._input_dir),

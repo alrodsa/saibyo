@@ -3,9 +3,9 @@ import logging
 import os
 from pathlib import Path
 
-from libs.base.conf.schema import Conf
-from libs.base.constants.app import ENV, ENVIRONMENTS
-from libs.base.logs.logger import configure_logging
+from saibyo.base.conf.schema import Conf
+from saibyo.base.constants.app import ENV, ENVIRONMENTS
+from saibyo.base.logs.logger import configure_logging
 
 
 def configure(app_name: str, root_dir: str, schema: type[Conf] = Conf) -> Conf:

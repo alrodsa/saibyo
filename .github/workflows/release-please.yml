@@ -20,7 +20,7 @@ jobs:
       - name: Run release-please
         uses: googleapis/release-please-action@v4
         with:
-            config-file: .release-please-config.json
-            token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
-            release-type: python
-            target-branch: develop
+          release-type: python
+          package-name: saibyo
+          path: .
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
