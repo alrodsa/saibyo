@@ -3,8 +3,8 @@ from unittest.mock import MagicMock, patch
 
 import torch
 
-from src.model.rife import RifeModel
-from src.modules.ifnet import IFNet
+from saibyo.model.rife import RifeModel
+from saibyo.modules.ifnet import IFNet
 
 
 class TestRifeModel(TestCase):
@@ -18,7 +18,7 @@ class TestRifeModel(TestCase):
         )
         self._weight_path = "path/to/model/weights.pth"
 
-    @patch("src.model.rife.torch.load")
+    @patch("saibyo.model.rife.torch.load")
     def test_load(self, mock_load):
         mock_state_dict = {
             "module.conv1.weight": MagicMock(),

@@ -5,7 +5,7 @@ from unittest import TestCase
 import torch
 from torch import nn
 
-from src.modules.ifnet import Head, IFBlock, IFNet, ResConv, conv_bn
+from saibyo.modules.ifnet import Head, IFBlock, IFNet, ResConv, conv_bn
 
 
 class TestConvBn(TestCase):

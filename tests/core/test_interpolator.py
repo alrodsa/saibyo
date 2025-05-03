@@ -3,7 +3,7 @@ from pathlib import Path
 from unittest import TestCase
 from unittest.mock import MagicMock
 
-from model.rife import RifeModel
+from saibyo.model.rife import RifeModel
 from tests.factories.images import save_random_images
 
 

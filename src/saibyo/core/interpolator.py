@@ -9,11 +9,11 @@ from attrs import define, field
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
-from model.rife import RifeModel
-from src.conf.conf import SaibyoConf
-from src.constants.app import APP_NAME, WEIGHTS_DIR
-from src.data.dataset import FramePairDataset
-from src.utils.image import pad_to_multiple
+from saibyo.conf.conf import SaibyoConf
+from saibyo.constants.app import APP_NAME, WEIGHTS_DIR
+from saibyo.data.dataset import FramePairDataset
+from saibyo.model.rife import RifeModel
+from saibyo.utils.image import pad_to_multiple
 
 
 @define

@@ -1,8 +1,8 @@
 import torch
 from attrs import define, field
 
-from src.model.base import BaseInterpolationModel
-from src.modules.ifnet import IFNet
+from saibyo.model.base import BaseInterpolationModel
+from saibyo.modules.ifnet import IFNet
 
 
 @define

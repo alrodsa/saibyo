@@ -1,6 +1,6 @@
 import fire
 
-from src.cli.interpolate import interpolate
+from saibyo.cli.interpolate import interpolate
 
 
 def main() -> None:

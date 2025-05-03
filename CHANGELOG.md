@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.2.0](https://github.com/alrodsa/saibyo/compare/v0.1.0...v0.2.0) (2025-05-03)
+
+
+### Features
+
+* add dev dependency group for twine ([3d22d4c](https://github.com/alrodsa/saibyo/commit/3d22d4c7b802fc81c0ea34beb8703d5ed2df6f89))
+* add initial __init__.py files for libs and base modules ([833895d](https://github.com/alrodsa/saibyo/commit/833895d5991beb919659e4350744a263176a9003))
+* add initial implementation of saibyo library with core modules and CLI ([7d921b5](https://github.com/alrodsa/saibyo/commit/7d921b581f434068ea45ccea5471155ddf77779a))
+* add initial release-please manifest configuration ([bbf59bd](https://github.com/alrodsa/saibyo/commit/bbf59bdd911c091edcc138a0fdc9ee7ad4dbf1d8))
+* add logging configuration and initial log files ([585d9e7](https://github.com/alrodsa/saibyo/commit/585d9e79522ed6b1c8f380c8fe2eeb152e055395))
+* add pull request template and semantic PR title check workflow ([3de81a2](https://github.com/alrodsa/saibyo/commit/3de81a28a91672b562b8da5003c64e86354fdd2c))
+* implement configuration management for application settings ([862ec2c](https://github.com/alrodsa/saibyo/commit/862ec2ca4e1c20234579dba703ffe16e2aba8166))
+* initialize saibyo package and add core functionality ([32678fc](https://github.com/alrodsa/saibyo/commit/32678fca5328900be9215fc3ef548d4d7a441167))
+* update release-please configuration and remove obsolete config file ([667e325](https://github.com/alrodsa/saibyo/commit/667e3259c95c76418a20fabdc915cec4906bf6bc))
+
 ## 0.1.0 (2025-04-29)
 
 

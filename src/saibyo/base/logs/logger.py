@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 from logging import DEBUG, INFO, FileHandler, Formatter, StreamHandler, getLogger
 from pathlib import Path
 
-from libs.base.constants.app import ENV, LOG_ON_FILE
+from saibyo.base.constants.app import ENV, LOG_ON_FILE
 
 
 def configure_logging(

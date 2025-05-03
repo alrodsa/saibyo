@@ -5,7 +5,7 @@ from unittest import TestCase
 
 import torch
 
-from src.constants.dataset import IMAGE_EXTENSION
+from saibyo.constants.dataset import IMAGE_EXTENSION
 from tests.factories.images import save_random_images
 
 
@@ -38,7 +38,7 @@ class TestFramePairDataset(TestCase):
         """
         Test the _files method.
         """
-        from src.data.dataset import FramePairDataset
+        from saibyo.data.dataset import FramePairDataset
 
         dataset = FramePairDataset(input_folder=str(self._input_dir))
         files = dataset._files
@@ -49,7 +49,7 @@ class TestFramePairDataset(TestCase):
         """
         Test the _pairs method.
         """
-        from src.data.dataset import FramePairDataset
+        from saibyo.data.dataset import FramePairDataset
 
         dataset = FramePairDataset(input_folder=str(self._input_dir))
         pairs = dataset._pairs
@@ -61,7 +61,7 @@ class TestFramePairDataset(TestCase):
         """
         Test the _to_tensor method.
         """
-        from src.data.dataset import FramePairDataset
+        from saibyo.data.dataset import FramePairDataset
 
         dataset = FramePairDataset(input_folder=str(self._input_dir))
         tensor = dataset._to_tensor(dataset._files[0])
@@ -72,7 +72,7 @@ class TestFramePairDataset(TestCase):
         """
         Test the __len__ method.
         """
-        from src.data.dataset import FramePairDataset
+        from saibyo.data.dataset import FramePairDataset
 
         dataset = FramePairDataset(input_folder=str(self._input_dir))
         self.assertEqual(len(dataset), 3)
@@ -81,7 +81,7 @@ class TestFramePairDataset(TestCase):
         """
         Test the __getitem__ method.
         """
-        from src.data.dataset import FramePairDataset
+        from saibyo.data.dataset import FramePairDataset
 
         dataset = FramePairDataset(input_folder=str(self._input_dir))
         item = dataset[0]

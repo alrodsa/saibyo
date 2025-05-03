@@ -1,7 +1,7 @@
-from libs.base.conf.app import configure
-from src.conf.conf import SaibyoConf
-from src.constants.app import APP_NAME, ROOT_DIR
-from src.core.interpolator import Interpolator
+from saibyo.base.conf.app import configure
+from saibyo.conf.conf import SaibyoConf
+from saibyo.constants.app import APP_NAME, ROOT_DIR
+from saibyo.core.interpolator import Interpolator
 
 
 def interpolate(input_folder: str, output_folder: str) -> None:
