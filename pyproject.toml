@@ -35,8 +35,7 @@ build-backend = "setuptools.build_meta"
 distribution = true
 
 [tool.pdm.build]
-includes = ["saibyo"]
-package-dir = { "" = "saibyo" }
+package-dir = { "saibyo" = "src/saibyo" }
 
 [tool.pdm.dev-dependencies]
 test = [
@@ -49,8 +48,8 @@ format = ["ruff>=0.1.14"]
 publish = ["twine>=6.1.0"]
 
 [tool.pdm.scripts]
-lint = "python3 -m ruff check saibyo"
-fix = "python3 -m ruff check saibyo --fix"
+lint = "python3 -m ruff check src/saibyo"
+fix = "python3 -m ruff check src/saibyo --fix"
 test = "pytest --cov=saibyo tests/ -W ignore::DeprecationWarning --cov-report=xml --cov-report=term-missing"
 interpolate = "python3 main.py interpolate"
 _next-call = "echo '-------------- NEXT CALL --------------'"
@@ -66,7 +65,7 @@ select = [
   "PL", "TRY", "FLY", "NPY", "AIR", "PERF", "RUF", "Q"
 ]
 ignore = [
-  "ANN101", "D100", "D104", "D211", "D213", "PD013", "COM812", "ISC001", "D212", "D203",
+  "D100", "D104", "D211", "D213", "PD013", "COM812", "ISC001", "D212", "D203",
   "D205", "D200", "D210", "D401", "G004", "ANN401", "PTH110", "PTH123", "PTH103", "S603",
   "TRY400", "DTZ007", "BLE001", "PTH207", "S108", "A002", "PLR0913", "FBT001", "FBT002", "N812"
 ]

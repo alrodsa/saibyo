@@ -3,4 +3,4 @@ fail_under=100
 
 [run]
 source = .
-omit = ./venv/*,tests/*,*__init__.py,./main.py,./src/cli/*.py
+omit = ./venv/*,tests/*,*__init__.py,./main.py,./src/saibyo/libs/*
