@@ -68,11 +68,10 @@ dist/
 *.db
 .pdm-python
 
-# Do not ignore libs
-!libs/
-!libs/base/
-!libs/base/logs/
-!libs/base/logs/**
+# Do not ignore base lib
+!src/saibyo/base/
+!src/saibyo/base/logs/
+!src/saibyo/base/logs/**
 **/__pycache__/
 **/*.pyc
 **/*.pyo
