@@ -8,13 +8,11 @@ on:
 
 jobs:
   publish:
-    if: github.event.pull_request.merged == true
-    name: Build and Publish to GitHub Packages
+    name: Build and Publish to Test PyPI
     runs-on: ubuntu-latest
 
     permissions:
       contents: read
-      packages: write
 
     steps:
       - name: Checkout
@@ -35,9 +33,9 @@ jobs:
         run: |
           pdm build
 
-      - name: Publish to GitHub Packages
+      - name: Publish to Test PyPI
         env:
           TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.SAIBYO_PACKAGE_TOKEN }}
+          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_TOKEN }}
         run: |
-          pdm run twine upload --repository-url https://upload.pypi.pkg.github.com/${{ github.repository_owner }} dist/*
+          pdm run twine upload --repository-url https://test.pypi.org/legacy/ dist/*
