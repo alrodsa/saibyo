@@ -1,12 +1,14 @@
 name: Publish Python Package
 
 on:
-  push:
+  pull_request:
     branches:
-      - main
+      - develop
+    types: [closed]
 
 jobs:
   publish:
+    if: github.event.pull_request.merged == true
     name: Build and Publish to GitHub Packages
     runs-on: ubuntu-latest
 
@@ -38,4 +40,4 @@ jobs:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.SAIBYO_PACKAGE_TOKEN }}
         run: |
-          twine upload --repository-url https://upload.pypi.pkg.github.com/${{ github.repository_owner }} dist/*
+          pdm run twine upload --repository-url https://upload.pypi.pkg.github.com/${{ github.repository_owner }} dist/*
