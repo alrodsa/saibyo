@@ -30,6 +30,10 @@ dependencies = [
 [build-system]
 requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
+include = ["src/saibyo/model/weights/flownet.pkl"]
+
+[tool.setuptools.package-data]
+"saibyo.model.weights" = ["flownet.pkl"]
 
 [tool.pdm]
 distribution = true
