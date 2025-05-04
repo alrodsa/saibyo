@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.4.0](https://github.com/alrodsa/saibyo/compare/v0.3.0...v0.4.0) (2025-05-04)
+
+
+### Features
+
+* include flownet.pkl in package data for weights module ([f1ccf03](https://github.com/alrodsa/saibyo/commit/f1ccf03dad421a0a1271bf1ad9b55add80a011b3))
+* include flownet.pkl in package data for weights module ([f1ccf03](https://github.com/alrodsa/saibyo/commit/f1ccf03dad421a0a1271bf1ad9b55add80a011b3))
+* include flownet.pkl in package data for weights module ([9cdec15](https://github.com/alrodsa/saibyo/commit/9cdec154cae379503c1163b7031b9c7477f4f747))
+
 ## [0.3.0](https://github.com/alrodsa/saibyo/compare/v0.2.1...v0.3.0) (2025-05-04)
 
 
