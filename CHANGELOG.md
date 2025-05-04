@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.3.0](https://github.com/alrodsa/saibyo/compare/v0.2.1...v0.3.0) (2025-05-04)
+
+
+### Features
+
+* add weights module initialization file ([5a46252](https://github.com/alrodsa/saibyo/commit/5a46252543ec2bde1d70b9f61171541febf3c395))
+* add weights module initialization file ([fa586bd](https://github.com/alrodsa/saibyo/commit/fa586bdb48ebc2d5012cbdb9d9b8c73dbca3f0d7))
+
+
+### Bug Fixes
+
+* update publish workflow to target Test PyPI instead of GitHub Package ([f79e342](https://github.com/alrodsa/saibyo/commit/f79e3429c82ff3f72b91212d862ccf09028c317e))
+* update publish workflow to target Test PyPI instead of GitHub Package ([f79e342](https://github.com/alrodsa/saibyo/commit/f79e3429c82ff3f72b91212d862ccf09028c317e))
+
 ## [0.2.1](https://github.com/alrodsa/saibyo/compare/v0.2.0...v0.2.1) (2025-05-04)
 
 
