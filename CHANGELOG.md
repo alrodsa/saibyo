@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0](https://github.com/alrodsa/saibyo/compare/v0.4.0...v0.5.0) (2025-05-04)
+
+
+### Features
+
+* update GitHub Actions workflow for Saibyo package publishing ([7a75867](https://github.com/alrodsa/saibyo/commit/7a758670777fe2d15dc7d61ded45ce20538fdc82))
+* update GitHub Actions workflow for Saibyo package publishing ([c585737](https://github.com/alrodsa/saibyo/commit/c585737ff9e5bab805e0bd446643842555eeab89))
+
 ## [0.4.0](https://github.com/alrodsa/saibyo/compare/v0.3.0...v0.4.0) (2025-05-04)
 
 
