@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.2](https://github.com/alrodsa/saibyo/compare/v0.2.1...v0.2.2) (2025-05-04)
+
+
+### Bug Fixes
+
+* update publish workflow to target Test PyPI instead of GitHub Package ([f79e342](https://github.com/alrodsa/saibyo/commit/f79e3429c82ff3f72b91212d862ccf09028c317e))
+* update publish workflow to target Test PyPI instead of GitHub Package ([f79e342](https://github.com/alrodsa/saibyo/commit/f79e3429c82ff3f72b91212d862ccf09028c317e))
+
 ## [0.2.1](https://github.com/alrodsa/saibyo/compare/v0.2.0...v0.2.1) (2025-05-04)
 
 
