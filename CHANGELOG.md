@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/alrodsa/saibyo/compare/v0.2.0...v0.2.1) (2025-05-04)
+
+
+### Bug Fixes
+
+* update publish workflow to trigger on closed pull requests ([7a1499b](https://github.com/alrodsa/saibyo/commit/7a1499b21bd45f0e3f1400ddf6c521889dcdebe7))
+* update publish workflow to trigger on closed pull requests ([7a1499b](https://github.com/alrodsa/saibyo/commit/7a1499b21bd45f0e3f1400ddf6c521889dcdebe7))
+
 ## [0.2.0](https://github.com/alrodsa/saibyo/compare/v0.1.0...v0.2.0) (2025-05-03)
 
 
