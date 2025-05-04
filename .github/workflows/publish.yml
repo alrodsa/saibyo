@@ -33,13 +33,6 @@ jobs:
         run: |
           pdm build
 
-      - name: (Publish) Test PyPI
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_TOKEN }}
-        run: |
-          pdm run twine upload --repository-url https://test.pypi.org/legacy/ dist/*
-
       - name: (Publish) GitHub Packages
         env:
           TWINE_USERNAME: ${{ secrets.SAIBYO_PACKAGE_USER }}
