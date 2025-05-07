@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.6.1](https://github.com/alrodsa/saibyo/compare/v0.6.0...v0.6.1) (2025-05-07)
+
+
+### Bug Fixes
+
+* correct file opening mode in version extraction script. ([dbd530e](https://github.com/alrodsa/saibyo/commit/dbd530ec5744d4a71a6154d4454b9b63ceeafb71))
+* Fix publish workflow ([5cf5737](https://github.com/alrodsa/saibyo/commit/5cf573762b1c16a75d7289ac02c5e2564c670c11))
+* Hotfix in publish workflow ([51afb1a](https://github.com/alrodsa/saibyo/commit/51afb1afd737b0010d832fdf084153255f8e4092))
+* Hotfix in publish workflow ([51afb1a](https://github.com/alrodsa/saibyo/commit/51afb1afd737b0010d832fdf084153255f8e4092))
+* update file path for Flownet weights in publish workflow. ([4915edf](https://github.com/alrodsa/saibyo/commit/4915edff13602b5c94f2cdb6df0e212fa4f9bc34))
+
 ## [0.6.0](https://github.com/alrodsa/saibyo/compare/v0.5.0...v0.6.0) (2025-05-07)
 
 
