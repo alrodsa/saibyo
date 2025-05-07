@@ -48,6 +48,6 @@ jobs:
           body_path: CHANGELOG.md
           files: |
             dist/*.whl
-            src/saibyo/data/flownet.pkl
+            src/saibyo/model/weights/flownet.pkl
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
