@@ -1,21 +1,20 @@
-name: Publish Saibyo Python Package
+name: Publish Saibyo to GitHub Releases
 
 on:
-  pull_request:
+  push:
     branches:
-      - develop
-    types: [closed]
+      - main
 
 jobs:
   publish:
-    name: Build and Publish
+    name: Build & Upload to GitHub Release
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read
+      contents: write
 
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -23,19 +22,29 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: (Install) PDM and dependencies
+      - name: Install PDM and dependencies
         run: |
-          pip install pdm
+          pip install pdm tomli
           pdm config python.use_venv true
           pdm install --dev
 
-      - name: Build package
+      - name: Extract version
+        id: get_version
         run: |
-          pdm build
+          VERSION=$(python -c "import tomli; print(tomli.load(open('pyproject.toml'))['project']['version'])")
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      - name: (Publish) GitHub Packages
+      - name: Build wheel
+        run: pdm build
+
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ env.VERSION }}
+          name: saibyo v${{ env.VERSION }}
+          body_path: CHANGELOG.md
+          files: |
+            dist/*.whl
+            src/saibyo/data/flownet.pkl
         env:
-          TWINE_USERNAME: ${{ secrets.SAIBYO_PACKAGE_USER }}
-          TWINE_PASSWORD: ${{ secrets.SAIBYO_PACKAGE_TOKEN }}
-        run: |
-          pdm run twine upload --repository-url https://upload.pypi.pkg.github.com/alrodsa dist/*
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
