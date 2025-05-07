@@ -1,5 +1,52 @@
 # Changelog
 
+## [0.6.0](https://github.com/alrodsa/saibyo/compare/v0.5.0...v0.6.0) (2025-05-07)
+
+
+### Features
+
+* update GitHub Actions workflow to publish package to GitHub Releases ([99abec9](https://github.com/alrodsa/saibyo/commit/99abec92630c5fda475fe8b3947eb69f5b53ef65))
+* update GitHub Actions workflow to publish package to GitHub Releases ([c8bc14c](https://github.com/alrodsa/saibyo/commit/c8bc14c2e962120f4bd0c75180f78484b9ee9951))
+
+## [0.5.0](https://github.com/alrodsa/saibyo/compare/v0.4.0...v0.5.0) (2025-05-04)
+
+
+### Features
+
+* update GitHub Actions workflow for Saibyo package publishing ([7a75867](https://github.com/alrodsa/saibyo/commit/7a758670777fe2d15dc7d61ded45ce20538fdc82))
+* update GitHub Actions workflow for Saibyo package publishing ([c585737](https://github.com/alrodsa/saibyo/commit/c585737ff9e5bab805e0bd446643842555eeab89))
+
+## [0.4.0](https://github.com/alrodsa/saibyo/compare/v0.3.0...v0.4.0) (2025-05-04)
+
+
+### Features
+
+* include flownet.pkl in package data for weights module ([f1ccf03](https://github.com/alrodsa/saibyo/commit/f1ccf03dad421a0a1271bf1ad9b55add80a011b3))
+* include flownet.pkl in package data for weights module ([f1ccf03](https://github.com/alrodsa/saibyo/commit/f1ccf03dad421a0a1271bf1ad9b55add80a011b3))
+* include flownet.pkl in package data for weights module ([9cdec15](https://github.com/alrodsa/saibyo/commit/9cdec154cae379503c1163b7031b9c7477f4f747))
+
+## [0.3.0](https://github.com/alrodsa/saibyo/compare/v0.2.1...v0.3.0) (2025-05-04)
+
+
+### Features
+
+* add weights module initialization file ([5a46252](https://github.com/alrodsa/saibyo/commit/5a46252543ec2bde1d70b9f61171541febf3c395))
+* add weights module initialization file ([fa586bd](https://github.com/alrodsa/saibyo/commit/fa586bdb48ebc2d5012cbdb9d9b8c73dbca3f0d7))
+
+
+### Bug Fixes
+
+* update publish workflow to target Test PyPI instead of GitHub Package ([f79e342](https://github.com/alrodsa/saibyo/commit/f79e3429c82ff3f72b91212d862ccf09028c317e))
+* update publish workflow to target Test PyPI instead of GitHub Package ([f79e342](https://github.com/alrodsa/saibyo/commit/f79e3429c82ff3f72b91212d862ccf09028c317e))
+
+## [0.2.1](https://github.com/alrodsa/saibyo/compare/v0.2.0...v0.2.1) (2025-05-04)
+
+
+### Bug Fixes
+
+* update publish workflow to trigger on closed pull requests ([7a1499b](https://github.com/alrodsa/saibyo/commit/7a1499b21bd45f0e3f1400ddf6c521889dcdebe7))
+* update publish workflow to trigger on closed pull requests ([7a1499b](https://github.com/alrodsa/saibyo/commit/7a1499b21bd45f0e3f1400ddf6c521889dcdebe7))
+
 ## [0.2.0](https://github.com/alrodsa/saibyo/compare/v0.1.0...v0.2.0) (2025-05-03)
 
 
