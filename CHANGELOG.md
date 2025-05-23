@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.7.0](https://github.com/alrodsa/saibyo/compare/v0.6.1...v0.7.0) (2025-05-23)
+
+
+### Features
+
+* Adapted project to uv package manager. ([7c8c6b3](https://github.com/alrodsa/saibyo/commit/7c8c6b3c891afd748f36811d42e72747d22b0889))
+* alrodsa change project manager ([a215969](https://github.com/alrodsa/saibyo/commit/a215969c829dbb3b88b321cc55c08fc0bf3e28a3))
+* Enhance GitHub workflows with emoji labels for better readability. ([11a50c3](https://github.com/alrodsa/saibyo/commit/11a50c36b9d7aafb6be085610b2e1f1293f187fc))
+* Update GitHub workflows to use uv package manager and enhance step descriptions. ([5eb13a3](https://github.com/alrodsa/saibyo/commit/5eb13a35b9781616f45acaf87bdf7abaeb4bcae5))
+* Update publish workflow to install publish dependencies and refine optional dependencies in pyproject.toml. ([1aa7828](https://github.com/alrodsa/saibyo/commit/1aa782888ff8ac068e30eb6a8b6d8fce9c72d61b))
+* Update Python CI workflow to install dev dependencies with --system flag. ([db34f1c](https://github.com/alrodsa/saibyo/commit/db34f1c796fb8ed5d2f659d02a4b27fe7ccb440c))
+* Update Python CI workflow with improved step descriptions and virtual environment setup. ([9c45c14](https://github.com/alrodsa/saibyo/commit/9c45c147eb98ee6e8f32c8ef0ecdca45d8cf4840))
+
 ## [0.6.1](https://github.com/alrodsa/saibyo/compare/v0.6.0...v0.6.1) (2025-05-07)
 
 
