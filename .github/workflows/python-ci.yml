@@ -23,7 +23,7 @@ jobs:
         run: |
           echo "⚙️ Installing uv and dev dependencies..."
           pip install uv
-          uv pip install '.[dev]'
+          uv pip install ".[dev]" --system
 
       - name: 🔍 Run Ruff Lint
         run: |
@@ -47,7 +47,7 @@ jobs:
         run: |
           echo "⚙️ Installing uv and dev dependencies..."
           pip install uv
-          uv pip install '.[dev]'
+          uv pip install '.[dev]' --system
 
       - name: 🧪 Run Tests
         run: |
