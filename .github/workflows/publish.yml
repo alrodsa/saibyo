@@ -27,8 +27,10 @@ jobs:
 
       - name: ⚙️ Install uv and publish dependencies
         run: |
-          echo "⚡ Installing uv and publish extras..."
+          echo "⚡ Installing uv and creating virtualenv..."
           pip install uv
+          uv venv .venv
+          source .venv/bin/activate
           uv pip install -e ".[publish]"
 
       - name: 🏷 Extract version
