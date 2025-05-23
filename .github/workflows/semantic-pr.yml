@@ -1,4 +1,4 @@
-name: Semantic PR Title Check
+name: ✅ Semantic PR Title Check
 
 on:
   pull_request:
@@ -6,9 +6,12 @@ on:
 
 jobs:
   check:
+    name: 🔍 Validate PR title format
     runs-on: ubuntu-latest
+
     steps:
-      - uses: amannn/action-semantic-pull-request@v5
+      - name: 🧠 Check semantic PR title
+        uses: amannn/action-semantic-pull-request@v5
         with:
           types: |
             feat
