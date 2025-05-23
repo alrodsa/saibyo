@@ -30,7 +30,7 @@ jobs:
           echo "⚡ Creating virtualenv with uv..."
           pip install uv
           uv venv .venv
-          .venv/bin/python -m pip install -e ".[publish]"
+          uv pip install -e ".[publish]"
 
       - name: 🏷 Extract version
         id: get_version
