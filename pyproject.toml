@@ -1,6 +1,6 @@
 [project]
 name = "saibyo"
-version = "0.6.1"
+version = "0.7.0"
 description = "A Python package for video interpolation using deep learning."
 readme = "README.md"
 requires-python = "==3.10.*"
@@ -27,55 +27,26 @@ dependencies = [
   "ffmpeg-python>=0.2.0"
 ]
 
-[build-system]
-requires = ["setuptools>=61", "wheel"]
-build-backend = "setuptools.build_meta"
-include = ["src/saibyo/model/weights/flownet.pkl"]
-
-[tool.setuptools.package-data]
-"saibyo.model.weights" = ["flownet.pkl"]
-
-[tool.pdm]
-distribution = true
-
-[tool.pdm.build]
-package-dir = { "saibyo" = "src/saibyo" }
-
-[tool.pdm.dev-dependencies]
+[project.optional-dependencies]
+format = ["ruff>=0.1.14"]
 test = [
   "pytest>=7.4.4",
   "pytest-cov>=4.1.0",
   "faker>=24.8.0",
   "httpx>=0.27.0"
 ]
-format = ["ruff>=0.1.14"]
-publish = ["twine>=6.1.0"]
-
-[tool.pdm.scripts]
-lint = "python3 -m ruff check src/saibyo"
-fix = "python3 -m ruff check src/saibyo --fix"
-test = "pytest --cov=saibyo tests/ -W ignore::DeprecationWarning --cov-report=xml --cov-report=term-missing"
-interpolate = "python3 main.py interpolate"
-_next-call = "echo '-------------- NEXT CALL --------------'"
-
-[tool.pdm.scripts.all]
-composite = ["test", "_next-call", "lint"]
-
-[tool.ruff.lint]
-select = [
-  "E", "W", "F", "C90", "I", "N", "D", "UP", "YTT", "ANN", "ASYNC", "S", "BLE", "FBT", "B",
-  "A", "COM", "C4", "DTZ", "T10", "DJ", "EM", "EXE", "FA", "ISC", "ICN", "G", "RSE", "RET",
-  "SLF", "SLOT", "SIM", "TID", "TCH", "INT", "ARG", "PTH", "TD", "FIX", "ERA", "PD", "PGH",
-  "PL", "TRY", "FLY", "NPY", "AIR", "PERF", "RUF", "Q"
-]
-ignore = [
-  "D100", "D104", "D211", "D213", "PD013", "COM812", "ISC001", "D212", "D203",
-  "D205", "D200", "D210", "D401", "G004", "ANN401", "PTH110", "PTH123", "PTH103", "S603",
-  "TRY400", "DTZ007", "BLE001", "PTH207", "S108", "A002", "PLR0913", "FBT001", "FBT002", "N812"
+publish = [
+  "build",
+  "tomli",
+  "twine"
 ]
 
-[tool.ruff.lint.per-file-ignores]
-"./tests/**" = [
-  "D101", "D102", "ANN001", "ANN201", "ANN202", "E501", "S311", "ANN205",
-  "PLR2004", "FBT002", "RET503", "B904", "SLF001"
-]
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = { "saibyo" = "src/saibyo" }
+
+[tool.setuptools.package-data]
+"saibyo.model.weights" = ["flownet.pkl"]

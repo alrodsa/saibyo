@@ -1,6 +1,6 @@
 pdm venv create 3.10
 
-pdm install -G:all
+uv sync --all-extras --all-groups
 
 source .venv/bin/activate
 
