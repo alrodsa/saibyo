@@ -1,4 +1,4 @@
-name: 🚀 Publish Saibyo to GitHub Releases
+name: 🚀 Publish Saibyo to GitHub Releases & GCP Artifact Registry
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   publish:
-    name: 🛠 Build & Upload to GitHub Release
+    name: 🛠 Build & Upload
     runs-on: ubuntu-latest
 
     permissions:
@@ -55,3 +55,15 @@ jobs:
             src/saibyo/model/weights/flownet.pkl
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🔐 Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_ARTIFACT_REGISTRY_KEY }}
+
+      - name: 🚀 Upload wheel to GCP Artifact Registry
+        run: |
+          echo "🚀 Publishing to Artifact Registry..."
+          .venv/bin/twine upload \
+            --repository-url https://us-central1-python.pkg.dev/pivotal-stacker-460718-p6/dev-python/ \
+            dist/*.whl
