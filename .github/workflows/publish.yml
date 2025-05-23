@@ -25,15 +25,11 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: ⚙️ Install uv and build tools
+      - name: ⚙️ Install uv and publish dependencies
         run: |
-          echo "⚡ Installing uv and build dependencies..."
-          pip install uv tomli wheel build
-
-      - name: 📦 Install project (with dev dependencies)
-        run: |
-          echo "📦 Installing project and dev dependencies..."
-          uv pip install '.[dev]'
+          echo "⚡ Installing uv and publish extras..."
+          pip install uv
+          uv pip install -e ".[publish]"
 
       - name: 🏷 Extract version
         id: get_version
