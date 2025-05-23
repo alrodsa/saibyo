@@ -30,20 +30,19 @@ jobs:
           echo "⚡ Installing uv and creating virtualenv..."
           pip install uv
           uv venv .venv
-          source .venv/bin/activate
-          uv pip install -e ".[publish]"
+          .venv/bin/uv pip install -e ".[publish]"
 
       - name: 🏷 Extract version
         id: get_version
         run: |
           echo "🔍 Extracting version from pyproject.toml..."
-          VERSION=$(python -c "import tomli; print(tomli.load(open('pyproject.toml', 'rb'))['project']['version'])")
+          VERSION=$(.venv/bin/python -c "import tomli; print(tomli.load(open('pyproject.toml', 'rb'))['project']['version'])")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: 🛠 Build wheel
         run: |
           echo "🛠 Building the package..."
-          python -m build --wheel
+          .venv/bin/python -m build --wheel
 
       - name: 📤 Upload to GitHub Release
         uses: softprops/action-gh-release@v1
