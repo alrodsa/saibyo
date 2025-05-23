@@ -56,7 +56,7 @@ RUN mkdir -p /opt/rife-ncnn && \
 USER $USERNAME
 
 # Instala pdm y otras herramientas
-RUN pip install --user pdm label-studio
+RUN pip install --user uv label-studio
 
 # Instala zsh personalizado
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- -t robbyrussell
