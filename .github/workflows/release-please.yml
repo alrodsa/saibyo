@@ -1,4 +1,4 @@
-name: Release Please
+name: 📦 Release Please
 
 on:
   push:
@@ -10,14 +10,14 @@ on:
 
 jobs:
   release:
-    name: Create Release PR
+    name: 🚀 Create Release PR
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: 📥 Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run release-please
+      - name: 🤖 Run Release Please
         uses: googleapis/release-please-action@v4
         with:
           release-type: python

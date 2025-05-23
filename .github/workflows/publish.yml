@@ -1,4 +1,4 @@
-name: Publish Saibyo to GitHub Releases
+name: 🚀 Publish Saibyo to GitHub Releases
 
 on:
   push:
@@ -10,37 +10,40 @@ on:
 
 jobs:
   publish:
-    name: Build & Upload to GitHub Release
+    name: 🛠 Build & Upload to GitHub Release
     runs-on: ubuntu-latest
 
     permissions:
       contents: write
 
     steps:
-      - name: Checkout code
+      - name: 📥 Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      - name: Install PDM and dependencies
+      - name: ⚙️ Install uv and publish dependencies
         run: |
-          pip install pdm tomli
-          pdm config python.use_venv true
-          pdm install --dev
+          echo "⚡ Installing uv and publish extras..."
+          pip install uv
+          uv pip install -e ".[publish]"
 
-      - name: Extract version
+      - name: 🏷 Extract version
         id: get_version
         run: |
+          echo "🔍 Extracting version from pyproject.toml..."
           VERSION=$(python -c "import tomli; print(tomli.load(open('pyproject.toml', 'rb'))['project']['version'])")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      - name: Build wheel
-        run: pdm build
+      - name: 🛠 Build wheel
+        run: |
+          echo "🛠 Building the package..."
+          python -m build --wheel
 
-      - name: Upload to GitHub Release
+      - name: 📤 Upload to GitHub Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ env.VERSION }}

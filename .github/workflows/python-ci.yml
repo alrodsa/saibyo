@@ -1,4 +1,4 @@
-name: CI - Python PDM
+name: 🧪 CI - Python UV
 
 on:
   push:
@@ -8,46 +8,48 @@ on:
 
 jobs:
   lint:
-    name: Lint code with Ruff
+    name: 🔍 Lint code with Ruff
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: Set up Python
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      - name: Install PDM
+      - name: ❄️ Install uv and create virtual environment
         run: |
-          pip install pdm
-          pdm config python.use_venv true
-          pdm install --dev
+          pip install uv
+          uv venv .venv
+          source .venv/bin/activate
+          uv pip install -e ".[format]"
 
-      - name: Run Ruff Lint
-        run: |
-          echo "🔍 Running Lint..."
-          pdm run lint
+      - name: 🔧 Run Ruff Lint
+        run: .venv/bin/ruff check src/saibyo
 
   test:
-    name: Run Tests with Coverage
+    name: 🧪 Run Tests with Coverage
     runs-on: ubuntu-latest
     needs: lint
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: Set up Python
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      - name: Install PDM
+      - name: ❄️ Install uv and create virtual environment
         run: |
-          pip install pdm
-          pdm config python.use_venv true
-          pdm install --dev
+          pip install uv
+          uv venv .venv
+          source .venv/bin/activate
+          uv pip install -e ".[test]"
 
-      - name: Run Tests
-        run: |
-          echo "🧪 Running Tests..."
-          pdm run test
+      - name: 🧪 Run Tests
+        run: .venv/bin/pytest --cov=saibyo tests/ -W ignore::DeprecationWarning --cov-report=xml --cov-report=term-missing
