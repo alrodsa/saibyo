@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.8.0](https://github.com/alrodsa/saibyo/compare/v0.7.0...v0.8.0) (2025-05-23)
+
+
+### Features
+
+* enhance publish workflow to include GCP Artifact Registry upload. ([0170c9c](https://github.com/alrodsa/saibyo/commit/0170c9c93cdf853de4f819b3245f07e56a773f3e))
+* enhance publish workflow to include GCP Artifact Registry upload. ([0170c9c](https://github.com/alrodsa/saibyo/commit/0170c9c93cdf853de4f819b3245f07e56a773f3e))
+* enhance publish workflow to include GCP Artifact Registry upload. ([0a07502](https://github.com/alrodsa/saibyo/commit/0a07502c42eedac4914c350e9401a06976a3d85c))
+* update publish workflow to correct virtual environment setup commands ([8d1e5fe](https://github.com/alrodsa/saibyo/commit/8d1e5fe41c62da17957921ab05313a1fa7a3ec75))
+* update publish workflow to create and activate virtual environment. ([daa9702](https://github.com/alrodsa/saibyo/commit/daa97026890728a5cde97d7cdea9054eea654e5b))
+* update publish workflow to use 'uv' for installing dependencies in virtual environment ([40dfc04](https://github.com/alrodsa/saibyo/commit/40dfc04368e01ca463e84da397f73cd333eb511f))
+* update publish workflow to use virtual environment for dependency installation and version extraction. ([bef9f15](https://github.com/alrodsa/saibyo/commit/bef9f15db350cfb74f3ac2b509a2a97be4542c0f))
+
 ## [0.7.0](https://github.com/alrodsa/saibyo/compare/v0.6.1...v0.7.0) (2025-05-23)
 
 
