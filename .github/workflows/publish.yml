@@ -44,6 +44,10 @@ jobs:
           echo "🛠 Building the package..."
           .venv/bin/python -m build --wheel
 
+      - name: 🛡 Ensure wheel exists
+        run: |
+          ls dist/*.whl || (echo "❌ No wheel found in dist/" && exit 1)
+
       - name: 📤 Upload to GitHub Release
         uses: softprops/action-gh-release@v1
         with:
