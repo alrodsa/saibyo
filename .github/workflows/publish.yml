@@ -10,7 +10,7 @@ on:
 
 jobs:
   publish:
-    name: 🛠 Build & Upload
+    name: 💠 Build & Upload
     runs-on: ubuntu-latest
 
     permissions:
@@ -39,9 +39,9 @@ jobs:
           VERSION=$(.venv/bin/python -c "import tomli; print(tomli.load(open('pyproject.toml', 'rb'))['project']['version'])")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      - name: 🛠 Build wheel
+      - name: 💠 Build wheel
         run: |
-          echo "🛠 Building the package..."
+          echo "💠 Building the package..."
           .venv/bin/python -m build --wheel
 
       - name: 🛡 Ensure wheel exists
@@ -60,22 +60,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: 🔐 Decode GCP service account key
+        run: |
+          echo "${{ secrets.GCP_ARTIFACT_REGISTRY_KEY_B64 }}" | base64 -d > ${{ github.workspace }}/gcp-sa-key.json
+
       - name: 🔐 Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: ${{ secrets.GCP_ARTIFACT_REGISTRY_KEY }}
-
-      - name: 📝 Configure .pypirc for Artifact Registry
-        run: |
-          echo "[distutils]" > ~/.pypirc
-          echo "index-servers = artifact-registry" >> ~/.pypirc
-          echo "" >> ~/.pypirc
-          echo "[artifact-registry]" >> ~/.pypirc
-          echo "repository: https://us-central1-python.pkg.dev/pivotal-stacker-460718-p6/dev-python/" >> ~/.pypirc
-          echo "username: _json_key" >> ~/.pypirc
-          echo "password: ${{ secrets.GCP_ARTIFACT_REGISTRY_KEY }}" >> ~/.pypirc
+          credentials_json: '${{ github.workspace }}/gcp-sa-key.json'
 
       - name: 🚀 Upload wheel to GCP Artifact Registry
         run: |
           echo "🚀 Publishing to Artifact Registry..."
-          .venv/bin/twine upload -r artifact-registry dist/*.whl
+          .venv/bin/twine upload \
+            --repository-url https://us-central1-python.pkg.dev/pivotal-stacker-460718-p6/dev-python/ \
+            dist/*.whl
