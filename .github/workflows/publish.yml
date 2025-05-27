@@ -62,15 +62,17 @@ jobs:
 
       - name: 🔐 Decode GCP service account key
         run: |
-          echo "${{ secrets.GCP_ARTIFACT_REGISTRY_KEY_B64 }}" | base64 --decode | jq .
-          echo "${{ secrets.GCP_ARTIFACT_REGISTRY_KEY_B64 }}" | base64 -d > ${{ github.workspace }}/gcp-sa-key.json
-          cat ${{ github.workspace }}/gcp-sa-key.json | jq .
+          echo "${{ secrets.GCP_ARTIFACT_REGISTRY_KEY_B64 }}" | base64 --decode > ${{ github.workspace }}/gcp-sa-key.json
           echo "✅ Decoded service account key to gcp-sa-key.json"
 
       - name: 🔐 Authenticate to Google Cloud
-        uses: google-github-actions/auth@v2
-        with:
-          credentials_json: '${{ github.workspace }}/gcp-sa-key.json'
+        run: |
+          echo "🔐 Authenticating to Google Cloud..."
+          cat ${{ github.workspace }}/gcp-sa-key.json
+          gcloud auth activate-service-account --key-file=${{ github.workspace }}/gcp-sa-key.json
+          gcloud config set project pivotal-stacker-460718-p6
+          gcloud config set compute/region us-central1
+          gcloud config set compute/zone us-central1-a
 
       - name: 🚀 Upload wheel to GCP Artifact Registry
         run: |
