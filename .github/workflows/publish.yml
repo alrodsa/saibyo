@@ -30,19 +30,20 @@ jobs:
           echo "⚡ Creating virtualenv with uv..."
           pip install uv
           uv venv .venv
+          source .venv/bin/activate
           uv pip install -e ".[publish]"
 
       - name: 🏷 Extract version
         id: get_version
         run: |
           echo "🔍 Extracting version from pyproject.toml..."
-          VERSION=$(.venv/bin/python -c "import tomli; print(tomli.load(open('pyproject.toml', 'rb'))['project']['version'])")
+          VERSION=$(python -c "import tomli; print(tomli.load(open('pyproject.toml', 'rb'))['project']['version'])")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: 💠 Build wheel
         run: |
           echo "💠 Building the package..."
-          .venv/bin/python -m build --wheel
+          python -m build --wheel
 
       - name: 🛡 Ensure wheel exists
         run: |
@@ -70,8 +71,11 @@ jobs:
           credentials_json: '${{ github.workspace }}/gcp-sa-key.json'
 
       - name: 🚀 Upload wheel to GCP Artifact Registry
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: "oauth2accesstoken"
         run: |
           echo "🚀 Publishing to Artifact Registry..."
-          .venv/bin/twine upload \
+          python -m twine upload \
             --repository-url https://us-central1-python.pkg.dev/pivotal-stacker-460718-p6/dev-python/ \
             dist/*.whl
