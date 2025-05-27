@@ -62,8 +62,10 @@ jobs:
 
       - name: 🔐 Decode GCP service account key
         run: |
-          echo cat "${{ secrets.GCP_ARTIFACT_REGISTRY_KEY_B64 }}" | base64 --decode | jq .
+          echo "${{ secrets.GCP_ARTIFACT_REGISTRY_KEY_B64 }}" | base64 --decode | jq .
           echo "${{ secrets.GCP_ARTIFACT_REGISTRY_KEY_B64 }}" | base64 -d > ${{ github.workspace }}/gcp-sa-key.json
+          cat ${{ github.workspace }}/gcp-sa-key.json | jq .
+          echo "✅ Decoded service account key to gcp-sa-key.json"
 
       - name: 🔐 Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
