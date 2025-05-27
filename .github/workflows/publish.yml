@@ -65,9 +65,17 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCP_ARTIFACT_REGISTRY_KEY }}
 
+      - name: 📝 Configure .pypirc for Artifact Registry
+        run: |
+          echo "[distutils]" > ~/.pypirc
+          echo "index-servers = artifact-registry" >> ~/.pypirc
+          echo "" >> ~/.pypirc
+          echo "[artifact-registry]" >> ~/.pypirc
+          echo "repository: https://us-central1-python.pkg.dev/pivotal-stacker-460718-p6/dev-python/" >> ~/.pypirc
+          echo "username: _json_key" >> ~/.pypirc
+          echo "password: ${{ secrets.GCP_ARTIFACT_REGISTRY_KEY }}" >> ~/.pypirc
+
       - name: 🚀 Upload wheel to GCP Artifact Registry
         run: |
           echo "🚀 Publishing to Artifact Registry..."
-          .venv/bin/twine upload \
-            --repository-url https://us-central1-python.pkg.dev/pivotal-stacker-460718-p6/dev-python/ \
-            dist/*.whl
+          .venv/bin/twine upload -r artifact-registry dist/*.whl
