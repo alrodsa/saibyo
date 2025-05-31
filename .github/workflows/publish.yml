@@ -13,7 +13,7 @@ jobs:
 
     permissions:
       contents: write
-      id-token: write  # Needed for federated auth
+      id-token: write  # Necesario para autenticación federada
 
     steps:
       - name: 📥 Checkout code
@@ -26,20 +26,25 @@ jobs:
 
       - name: ⚙️ Install uv and publish dependencies
         run: |
+          echo "⚡ Creating virtualenv with uv..."
           pip install uv
+          uv venv
+          source .venv/bin/activate
           uv pip install -e ".[publish]"
 
       - name: 🏷 Extract version
         id: get_version
         run: |
           echo "🔍 Extracting version from pyproject.toml..."
-          VERSION=$(python -c "import tomllib; print(tomllib.load(open('pyproject.toml', 'rb'))['project']['version'])")
+          source .venv/bin/activate
+          VERSION=$(.venv/bin/python -c "import tomllib; print(tomllib.load(open('pyproject.toml', 'rb'))['project']['version'])")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: 💠 Build wheel
         run: |
           echo "💠 Building the package..."
-          uv build
+          source .venv/bin/activate
+          .venv/bin/python -m build --wheel
 
       - name: 🛡 Ensure wheel exists
         run: |
@@ -58,7 +63,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🔐 Authenticate with Workload Identity Federation
-        id: auth
         uses: google-github-actions/auth@v2
         with:
           token_format: access_token
@@ -68,6 +72,7 @@ jobs:
       - name: 🚀 Upload to GCP Artifact Registry with uv
         run: |
           echo "🚀 Publishing to Artifact Registry..."
+          source .venv/bin/activate
           uv publish --index dev-python \
             --username oauth2accesstoken \
             --password ${{ steps.auth.outputs.access_token }} \
