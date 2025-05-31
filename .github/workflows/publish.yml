@@ -15,6 +15,7 @@ jobs:
 
     permissions:
       contents: write
+      id-token: write
 
     steps:
       - name: 📥 Checkout code
@@ -60,14 +61,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🔐 Decode GCP service account key
-        run: |
-          echo "${{ secrets.GCP_ARTIFACT_REGISTRY_KEY_B64 }}" | base64 --decode > ${{ github.workspace }}/gcp-sa-key.json
-          echo "✅ Decoded service account key to gcp-sa-key.json"
+      - name: 🔐 Authenticate with Workload Identity Federation
+        uses: google-github-actions/auth@v2
+        with:
+          token_format: access_token
+          workload_identity_provider: ${{ secrets.IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.IDENTITY_PROVIDER_ACCOUNT }}
+          project_id: ${{ secrets.PROJECT_ID }}
 
-      - name: 🚀 Upload wheel to GCP Artifact Registry
+      - name: 🚀 Upload to GCP Artifact Registry with uv
         run: |
-          echo "🚀 Publishing to Artifact Registry..."
-          .venv/bin/twine upload \
-            --repository-url https://us-central1-python.pkg.dev/pivotal-stacker-460718-p6/dev-python/ \
-            dist/*.whl
+          echo "🚀 Publishing to Artifact Registry with uv..."
+          .venv/bin/uv publish --index dev-python \
+            --username oauth2accesstoken \
+            --password ${{ steps.auth.outputs.access_token }} \
+            --keyring-provider subprocess

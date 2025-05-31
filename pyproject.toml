@@ -50,3 +50,8 @@ package-dir = { "saibyo" = "src/saibyo" }
 
 [tool.setuptools.package-data]
 "saibyo.model.weights" = ["flownet.pkl"]
+
+[[tool.uv.index]]
+name = "dev-python"
+url = "https://us-central1-python.pkg.dev/pivotal-stacker-460718-p6/dev-python"
+publish-url = "https://us-central1-python.pkg.dev/pivotal-stacker-460718-p6/dev-python"
