@@ -53,9 +53,15 @@ RUN mkdir -p /opt/rife-ncnn && \
     ln -s /opt/rife-ncnn/rife-ncnn-vulkan/rife-ncnn-vulkan /usr/local/bin/rife-ncnn && \
     rm /opt/rife-ncnn/rife.zip
 
+# Instala Google Cloud SDK (gcloud)
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
+    gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg && \
+    apt update -y && apt install -y google-cloud-sdk
+
 USER $USERNAME
 
-# Instala pdm y otras herramientas
+# Instala uv y otras herramientas
 RUN pip install --user uv label-studio
 
 # Instala zsh personalizado
