@@ -15,7 +15,7 @@ jobs:
 
     permissions:
       contents: write
-      id-token: write
+      id-token: write  # Necesario para autenticación federada
 
     steps:
       - name: 📥 Checkout code
@@ -37,7 +37,7 @@ jobs:
         id: get_version
         run: |
           echo "🔍 Extracting version from pyproject.toml..."
-          VERSION=$(.venv/bin/python -c "import tomli; print(tomli.load(open('pyproject.toml', 'rb'))['project']['version'])")
+          VERSION=$(.venv/bin/python -c "import tomllib; print(tomllib.load(open('pyproject.toml', 'rb'))['project']['version'])")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: 💠 Build wheel
@@ -67,12 +67,10 @@ jobs:
           token_format: access_token
           workload_identity_provider: ${{ secrets.IDENTITY_PROVIDER }}
           service_account: ${{ secrets.IDENTITY_PROVIDER_ACCOUNT }}
-          project_id: ${{ secrets.PROJECT_ID }}
 
-      - name: 🚀 Upload to GCP Artifact Registry with uv
+      - name: 🚀 Upload to GCP Artifact Registry
         run: |
-          echo "🚀 Publishing to Artifact Registry with uv..."
-          .venv/bin/uv publish --index dev-python \
-            --username oauth2accesstoken \
-            --password ${{ steps.auth.outputs.access_token }} \
-            --keyring-provider subprocess
+          echo "🚀 Publishing to Artifact Registry..."
+          .venv/bin/twine upload \
+            --repository-url https://us-central1-python.pkg.dev/pivotal-stacker-460718-p6/dev-python/ \
+            dist/*.whl
