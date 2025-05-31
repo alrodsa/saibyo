@@ -2,11 +2,9 @@ name: 🚀 Publish Saibyo to GitHub Releases & GCP Artifact Registry
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   publish:
@@ -15,7 +13,7 @@ jobs:
 
     permissions:
       contents: write
-      id-token: write  # Necesario para autenticación federada
+      id-token: write  # Needed for federated auth
 
     steps:
       - name: 📥 Checkout code
@@ -28,22 +26,20 @@ jobs:
 
       - name: ⚙️ Install uv and publish dependencies
         run: |
-          echo "⚡ Creating virtualenv with uv..."
           pip install uv
-          uv venv .venv
           uv pip install -e ".[publish]"
 
       - name: 🏷 Extract version
         id: get_version
         run: |
           echo "🔍 Extracting version from pyproject.toml..."
-          VERSION=$(.venv/bin/python -c "import tomli; print(tomli.load(open('pyproject.toml', 'rb'))['project']['version'])")
+          VERSION=$(python -c "import tomllib; print(tomllib.load(open('pyproject.toml', 'rb'))['project']['version'])")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: 💠 Build wheel
         run: |
           echo "💠 Building the package..."
-          .venv/bin/python -m build --wheel
+          uv build
 
       - name: 🛡 Ensure wheel exists
         run: |
@@ -62,15 +58,17 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🔐 Authenticate with Workload Identity Federation
+        id: auth
         uses: google-github-actions/auth@v2
         with:
           token_format: access_token
           workload_identity_provider: ${{ secrets.IDENTITY_PROVIDER }}
           service_account: ${{ secrets.IDENTITY_PROVIDER_ACCOUNT }}
 
-      - name: 🚀 Upload to GCP Artifact Registry
+      - name: 🚀 Upload to GCP Artifact Registry with uv
         run: |
           echo "🚀 Publishing to Artifact Registry..."
-          .venv/bin/twine upload \
-            --repository-url https://us-central1-python.pkg.dev/pivotal-stacker-460718-p6/dev-python/ \
-            dist/*.whl
+          uv publish --index dev-python \
+            --username oauth2accesstoken \
+            --password ${{ steps.auth.outputs.access_token }} \
+            --keyring-provider subprocess
