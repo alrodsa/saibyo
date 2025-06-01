@@ -6,6 +6,21 @@
 
 ---
 
+## 🧭 Table of Contents
+
+- [🔎 Overview](#🔎-overview)
+- [⚙️ Setting up `SaibyoConf` variables](#️-setting-up-saibyoconf-variables)
+  - [🧬 Configuration Structure in Code](#-configuration-structure-in-code)
+  - [🔧 Configuration Methods](#-configuration-methods)
+    - [1️⃣ Using `.conf` files](#1️⃣-using-conf-files)
+    - [2️⃣ Using Environment Variables](#2️⃣-using-environment-variables)
+- [🚀 Usage: Interpolating Video Frames](#🚀-usage-interpolating-video-frames)
+  - [1️⃣ Command-Line Interface (CLI)](#1️⃣-command-line-interface-cli)
+  - [2️⃣ Programmatic API Usage](#2️⃣-programmatic-api-usage)
+  - [🖼 Input and Output Behavior](#-input-and-output-behavior)
+
+---
+
 ## 🔎 Overview
 
 **Saibyo** is a Python library designed to perform video frame interpolation using deep learning techniques. Its primary goal is to enhance the fluidity of videos by generating intermediate frames between existing ones. This is especially useful for applications like:
