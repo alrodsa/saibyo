@@ -145,12 +145,11 @@ class Interpolator:
                         ) * 255
                     )  # [H, W, 3]
 
-                    # Guardar imagenes originales e interpoladas
+                    # Save the images (original and interpolated) to output folder
                     for _, img in enumerate(img_list):
                         out_path = Path(output_folder) / f"frame_{actual_frame:06}.png"
                         cv2.imwrite(out_path, cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
                         actual_frame += 1
-
 
     def run(self, input_folder: str, output_folder: str) -> "Interpolator":
         """
@@ -165,6 +164,8 @@ class Interpolator:
             interpolated frames will be stored.
 
         """
+        self._logger.info(f"[📂] Input folder: {input_folder}")
+
         # Create Dataset
         dataset = FramePairDataset(input_folder=input_folder)
 
@@ -176,6 +177,10 @@ class Interpolator:
             shuffle=False,
             collate_fn=lambda x: x,
         )
+
+        # Create output folder if it doesn't exist
+        Path(output_folder).mkdir(parents=True, exist_ok=True)
+        self._logger.info(f"[📂] Output folder: {output_folder}")
 
         # Interpolate
         self._interpolate(dataloader=dataloader, output_folder=output_folder)
