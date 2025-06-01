@@ -1,10 +1,12 @@
 # 📦 Saibyo: Deep Learning Video Frame Interpolation Library
 
 [![CI - Python UV](https://github.com/alrodsa/saibyo/actions/workflows/python-ci.yml/badge.svg)](https://github.com/alrodsa/saibyo/actions/workflows/python-ci.yml)
+[![Publish](https://github.com/alrodsa/saibyo/actions/workflows/publish.yml/badge.svg)](https://github.com/alrodsa/saibyo/actions/workflows/publish.yml)
+[![Release](https://github.com/alrodsa/saibyo/actions/workflows/release-please.yml/badge.svg)](https://github.com/alrodsa/saibyo/actions/workflows/release-please.yml)
 
 ---
 
-## Overview
+## 🔎 Overview
 
 **Saibyo** is a Python library designed to perform video frame interpolation using deep learning techniques. Its primary goal is to enhance the fluidity of videos by generating intermediate frames between existing ones. This is especially useful for applications like:
 
@@ -12,13 +14,13 @@
 - 🎞️ Creating slow-motion effects
 - 🧪 Preprocessing datasets for computer vision tasks
 
-### 🚀 What Saibyo Does
+### What Saibyo Does
 
 - Takes a sequence of video frames as input.
 - Uses a configurable number of intermediate frames per pair, controlled by the `exp` parameter (e.g., `exp=2` → 3 new frames per pair).
 - Outputs an enriched sequence of frames to a specified directory.
 
-### 🛠 Features
+### Features
 
 - ✅ Easy-to-use CLI and programmatic APIs.
 - 🧬 Pydantic-based configuration system via `.conf` files or environment variables.
@@ -106,7 +108,7 @@ export SAIBYO_INTERPOLATOR_NUM_WORKERS=2
 export SAIBYO_INTERPOLATOR_EXP=3
 ```
 
-> #### 🧠 Understanding `exp` (Exponent)
+> #### 🧠 NOTE: Understanding `exp` (exponent)
 >
 >The `exp` parameter controls how many frames are interpolated between each original pair:
 >
@@ -154,5 +156,3 @@ For example:
 - `exp=1` → 1 interpolated frame (2x FPS)
 - `exp=2` → 3 interpolated frames (4x FPS)
 - `exp=3` → 7 interpolated frames (8x FPS)
-
-
