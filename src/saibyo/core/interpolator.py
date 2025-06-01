@@ -164,6 +164,8 @@ class Interpolator:
             interpolated frames will be stored.
 
         """
+        self._logger.info(f"[📂] Input folder: {input_folder}")
+
         # Create Dataset
         dataset = FramePairDataset(input_folder=input_folder)
 
@@ -177,9 +179,8 @@ class Interpolator:
         )
 
         # Create output folder if it doesn't exist
-        if not Path(output_folder).exists():
-            Path(output_folder).mkdir(parents=True, exist_ok=True)
-            self._logger.info(f"[📂] Created output folder: {output_folder}")
+        Path(output_folder).mkdir(parents=True, exist_ok=True)
+        self._logger.info(f"[📂] Output folder: {output_folder}")
 
         # Interpolate
         self._interpolate(dataloader=dataloader, output_folder=output_folder)
