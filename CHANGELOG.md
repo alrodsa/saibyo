@@ -1,5 +1,43 @@
 # Changelog
 
+## [0.9.0](https://github.com/alrodsa/saibyo/compare/v0.8.0...v0.9.0) (2025-06-01)
+
+
+### Features
+
+* add check to ensure wheel exists before upload ([f3ec417](https://github.com/alrodsa/saibyo/commit/f3ec4179a05c1dc744c799174c73efc25b4eff03))
+* add installation of Google Cloud SDK in Dockerfile ([8c34fd6](https://github.com/alrodsa/saibyo/commit/8c34fd6b1909f846307494ca750b7bf1f83b220f))
+* configure .pypirc for GCP Artifact Registry and update upload command ([dee5568](https://github.com/alrodsa/saibyo/commit/dee556871143454459d36809b3b91b72640f6d41))
+* update publish workflow for improved clarity and GCP authentication. ([cbe4898](https://github.com/alrodsa/saibyo/commit/cbe4898af861f321ccadb2d4d6c8ed611105dcb4))
+
+
+### Bug Fixes
+
+* add 'build' to publish dependencies in pyproject.toml ([108355b](https://github.com/alrodsa/saibyo/commit/108355b58f6c235b25f6905995b4566fefb7de27))
+* add missing command to decode GCP service account key in publish workflow ([63dc505](https://github.com/alrodsa/saibyo/commit/63dc50503b71ad57993f31c8fb9d7a9428cae26e))
+* add missing id for authentication step in publish workflow ([cf6bb94](https://github.com/alrodsa/saibyo/commit/cf6bb94b1849556c3edd948e73d5996be296f962))
+* correct command for decoding GCP service account key and improve output clarity ([442d488](https://github.com/alrodsa/saibyo/commit/442d488f43f12eb8ab863cf11d3e14b249e696f4))
+* correct import statement for version extraction in publish workflow ([680e8c9](https://github.com/alrodsa/saibyo/commit/680e8c92bb4f0786316e6565dad805b45441ab80))
+* enhance publish workflow by improving virtual environment setup and version extraction process ([4bb2701](https://github.com/alrodsa/saibyo/commit/4bb27013bace4e73998cc8929356af38c51ab149))
+* remove redundant Google Cloud authentication step in publish workflow ([e809c9f](https://github.com/alrodsa/saibyo/commit/e809c9f3f0debee4929d71c31001fc886a679083))
+* simplify GCP service account key decoding and authentication steps ([0f3fe70](https://github.com/alrodsa/saibyo/commit/0f3fe70015c1333872750cb8d19085ddbdc84757))
+* streamline publish workflow by removing unnecessary dependencies and updating version extraction method ([024669f](https://github.com/alrodsa/saibyo/commit/024669f722bd9df8d08c7dd855d38fc0e3ef5ab0))
+* streamline Python environment activation and commands in publish workflow ([25d3507](https://github.com/alrodsa/saibyo/commit/25d3507bf9f73b541e68508376910c3cae2c1695))
+* update default value for num_workers in InterpolatorConf and enhance output folder handling in Interpolator ([9c54c0c](https://github.com/alrodsa/saibyo/commit/9c54c0c348ed14a4a810fb5871beb6793715bbe9))
+* update GCP Artifact Registry upload step to use twine and correct version extraction method ([b1001cc](https://github.com/alrodsa/saibyo/commit/b1001ccf5e30e8120ce512793222b1527cf9502f))
+* update publish workflow to use Workload Identity Federation for GCP authentication and enhance upload command ([ed86439](https://github.com/alrodsa/saibyo/commit/ed8643942dec266f1853f68afcd31f0d10cf6d84))
+* update Python commands to use virtual environment explicitly in publish workflow. ([2deb349](https://github.com/alrodsa/saibyo/commit/2deb349d91808f191589ad7d68e4ef23ce705ae7))
+* update version extraction in publish workflow to use tomli and add tomli as a dependency ([2d75601](https://github.com/alrodsa/saibyo/commit/2d75601bcdca234fa80ebed8d4af98df828dbe97))
+
+
+### Documentation
+
+* added documentation ([1656e80](https://github.com/alrodsa/saibyo/commit/1656e80ea6394c759f38244999fbc68e97fa18e8))
+* added documentation ([1656e80](https://github.com/alrodsa/saibyo/commit/1656e80ea6394c759f38244999fbc68e97fa18e8))
+* enhance README with detailed library overview, configuration methods, and usage examples ([2d28b01](https://github.com/alrodsa/saibyo/commit/2d28b010bf49e26e8bb966a0ebd5535819fda5ff))
+* update README for improved clarity and formatting ([5dcab69](https://github.com/alrodsa/saibyo/commit/5dcab6938aad2491c1a0ef49491655206f550bf1))
+* update README to include detailed Table of Contents for improved navigation ([a7b1e9d](https://github.com/alrodsa/saibyo/commit/a7b1e9d2f3e80055863d4b958a575809c2c9f748))
+
 ## [0.8.0](https://github.com/alrodsa/saibyo/compare/v0.7.0...v0.8.0) (2025-05-23)
 
 

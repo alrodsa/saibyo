@@ -25,7 +25,7 @@ class InterpolatorConf(BaseSettings):
     """
 
     batch_size: int = Field(default=1, gt=0)
-    num_workers: int = Field(default=4, ge=0)
+    num_workers: int = Field(default=0, ge=0)
     exp: int = Field(default=1, gt=0)
 
     model_config = SettingsConfigDict(env_prefix="SAIBYO_INTERPOLATOR_")
@@ -41,7 +41,7 @@ class SaibyoConf(Conf, BaseSettings):
 
     """
 
-    interpolator: InterpolatorConf
+    interpolator: InterpolatorConf= Field(default_factory=InterpolatorConf)
 
     model_config = SettingsConfigDict(env_prefix="SAIBYO_")
 
