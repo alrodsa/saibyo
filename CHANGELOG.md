@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.10.0](https://github.com/alrodsa/saibyo/compare/v0.9.0...v0.10.0) (2025-07-08)
+
+
+### Features
+
+* new merge to develop from main ([1f151cb](https://github.com/alrodsa/saibyo/commit/1f151cbc83d7eb18b497071da13bdf440d94c2a7))
+
+
+### Documentation
+
+* Documentation added ([76260ac](https://github.com/alrodsa/saibyo/commit/76260ac0748a57de60cb4b493d46bc1ab1834534))
+
 ## [0.9.0](https://github.com/alrodsa/saibyo/compare/v0.8.0...v0.9.0) (2025-06-01)
 
 
