@@ -1,11 +1,18 @@
+from typing import Literal
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from saibyo.base.conf.schema import Conf
 from saibyo.constants.conf import (
+    BACKGROUND_COLOR_DESCRIPTION,
     COMPARATION_DESCRIPTION,
     EXPONENTIAL_DESCRIPTION,
     LIGHTWEIGHT_DESCRIPTION,
+    MODE_DESCRIPTION,
+    OVERLAY_TEXT_DESCRIPTION,
+    TEXT_POSITION_DESCRIPTION,
+    ModeType,
+    TextPositionType,
 )
 
 
@@ -39,7 +46,65 @@ class InterpolatorConf(BaseSettings):
     lightweight: bool = Field(default=True, description=LIGHTWEIGHT_DESCRIPTION)
     exponential: int = Field(default=2, description=EXPONENTIAL_DESCRIPTION)
 
-    model_config = SettingsConfigDict(env_prefix="SAIBYO_INTERPOLATOR_")
+    model_config = SettingsConfigDict(
+        env_prefix="SAIBYO_INTERPOLATOR_",
+        extra="allow"
+    )
+
+class OverlayTextConf(BaseSettings):
+    """
+    Configuration for the Overlay Text.
+
+    Attributes
+    ----------
+    overlay_text : bool
+        If True, displays an overlay with video source info (e.g., FPS, name).
+
+    """
+
+    overlay: bool = Field(
+        default=True, description=OVERLAY_TEXT_DESCRIPTION
+    )
+    position: TextPositionType = Field(
+        default="top_left", description=TEXT_POSITION_DESCRIPTION
+    )
+
+    model_config = SettingsConfigDict(
+        env_prefix="SAIBYO_COMPARATOR_OVERLAY_TEXT_"
+    )
+
+class ComparatorConf(BaseSettings):
+    """
+    Configuration for the Comparator.
+
+    Attributes
+    ----------
+    text_conf : OverlayTextConf
+        Configuration for the overlay text in the comparison video.
+    background_color : str
+        Background color for borders or empty areas in the comparison video.
+    mode : Literal["side_by_side", "top_bottom", "checkerboard", "split_half_vertical", "split_half_horizontal"]
+        Layout for video comparison, can be either 'side_by_side', 'top_bottom',
+        'split_half_vertical', or 'split_half_horizontal'.
+
+    """
+
+    text: OverlayTextConf = Field(
+        default_factory=OverlayTextConf
+    )
+    background_color: str = Field(
+        default="#000000",
+        description=BACKGROUND_COLOR_DESCRIPTION
+    )
+    mode: ModeType = Field(
+        default="side_by_side",
+        description=MODE_DESCRIPTION
+    )
+
+    model_config = SettingsConfigDict(
+        env_prefix="SAIBYO_COMPARATOR_",
+        extra="allow"
+    )
 
 class SaibyoConf(Conf, BaseSettings):
     """
@@ -53,8 +118,6 @@ class SaibyoConf(Conf, BaseSettings):
     """
 
     interpolator: InterpolatorConf= Field(default_factory=InterpolatorConf)
+    comparator: ComparatorConf = Field(default_factory=ComparatorConf)
 
     model_config = SettingsConfigDict(env_prefix="SAIBYO_")
-
-
-
