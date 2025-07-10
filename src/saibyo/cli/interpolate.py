@@ -1,25 +1,25 @@
 from saibyo.base.conf.app import configure
 from saibyo.conf.conf import SaibyoConf
 from saibyo.constants.app import APP_NAME, ROOT_DIR
-from saibyo.core.interpolator import Interpolator
+from saibyo.core.interpolation.rife import RifeInterpolator
 
 
-def interpolate(input_folder: str, output_folder: str) -> None:
+def interpolate(input_path: str, output_folder: str) -> None:
     """
     Interpolates the data in the input folder and saves it to the output folder.
 
     Parameters
     ----------
-    input_folder : str
-        The path to the input folder containing the data to be interpolated.
+    input_path : str
+        The path of the input video that will be fps boosted using interpolation.
     output_folder : str
-        The path to the output folder where the interpolated data will be saved.
+        The path to the output folder where the interpolated video will be saved.
 
     """
     conf = configure(APP_NAME, ROOT_DIR, SaibyoConf)
 
-    Interpolator(conf).run(
-        input_folder=input_folder,
+    RifeInterpolator(conf).run(
+        input_path=input_path,
         output_folder=output_folder,
     )
 

@@ -2,31 +2,42 @@ from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from saibyo.base.conf.schema import Conf
+from saibyo.constants.conf import (
+    COMPARATION_DESCRIPTION,
+    EXPONENTIAL_DESCRIPTION,
+    LIGHTWEIGHT_DESCRIPTION,
+)
 
 
 class InterpolatorConf(BaseSettings):
     """
-    Configuration for the interpolator.
+    Configuration for the Interpolator.
 
     Attributes
     ----------
-    batch_size : int
-        The number of pair of images to process in a batch.
-    exp : int
-        The number of frames to interpolate. This number is used in the
-        following way: `n_frames = 2 ** exp`. For example:
-        -  If `exp=1` then: `n_frames = 2 ** 1 = 2` which means 1 interpolated
-        frame between the two input frames. FPS will be multiplied by 2.
-        -  If `exp=2` then: `n_frames = 2 ** 2 = 4` which means 3 interpolated
-        frames between the two input frames. FPS will be multiplied by 4.
-        -  If `exp=3` then: `n_frames = 2 ** 3 = 8` which means 7 interpolated
-        frames between the two input frames. FPS will be multiplied by 8.
+    comparation : bool
+        If True, creates an extra video that compares the original video with the
+        interpolated video, showing the differences between them.
+    lightweight : bool
+        If True, the model inference will be performed using fp16 precision,
+        which is faster and uses less memory, but may result in lower quality output.
+    exponential : int
+        The value of the exponential parameter is used to determine the value of the
+        fps multiplier, which is calculated as 2 ** exponential. For example:
+        - If exponential is 1, the fps multiplier is 2 ** 1 = 2, resulting in
+        double the frames.
+        - If exponential is 2, the fps multiplier is 2 ** 2 = 4, resulting in
+        quadruple the frames.
+        - If exponential is 3, the fps multiplier is 2 ** 3 = 8, resulting in
+        eight times the frames.
+        This allows for flexible control over the frame rate increase during
+        interpolation.
 
     """
 
-    batch_size: int = Field(default=1, gt=0)
-    num_workers: int = Field(default=0, ge=0)
-    exp: int = Field(default=1, gt=0)
+    comparation: bool = Field(default=False, description=COMPARATION_DESCRIPTION)
+    lightweight: bool = Field(default=True, description=LIGHTWEIGHT_DESCRIPTION)
+    exponential: int = Field(default=2, description=EXPONENTIAL_DESCRIPTION)
 
     model_config = SettingsConfigDict(env_prefix="SAIBYO_INTERPOLATOR_")
 
