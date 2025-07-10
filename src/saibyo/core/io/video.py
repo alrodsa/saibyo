@@ -48,7 +48,7 @@ class VideoIOManager:
         self.video_out = cv2.VideoWriter(
             output_path,
             cv2.VideoWriter_fourcc(*"mp4v"),
-            fps,
+            round(fps),
             (video.width, video.height)
         )
         self._start_threads(video.input_path)
