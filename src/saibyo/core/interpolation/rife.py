@@ -8,7 +8,7 @@ from saibyo.constants.app import APP_NAME
 from saibyo.core.interpolation.interpolator import BaseInterpolator
 from saibyo.core.io.video import VideoIOManager
 from saibyo.metadata.video import VideoMetadata
-from saibyo.model.interpolation.engine import RifeEngine
+from saibyo.engine.interpolation.engine import RifeEngine
 from saibyo.utils.interpolation.audio import transfer_audio
 
 

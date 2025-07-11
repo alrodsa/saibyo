@@ -1,5 +1,6 @@
 import logging
 from functools import cached_property
+import math
 from pathlib import Path
 
 import cv2
@@ -102,7 +103,7 @@ class VideoMetadata:
         """
         self._logger.info(
             f"[🎥] Video Metadata: "
-            f"Video FPS: {self.fps}, Total Frames: {self.total_frames}, "
+            f"Video FPS: {math.ceil(self.fps)}, Total Frames: {self.total_frames}, "
             f"Height: {self.height}, Width: {self.width}, Duration: {self.duration}"
         )
 
