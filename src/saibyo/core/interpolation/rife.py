@@ -21,16 +21,12 @@ class RifeInterpolator(BaseInterpolator):
     a method to run the interpolation on a given input folder containing
     original frames and save the interpolated frames to a given output folder.
 
-    Parameters
+    Attributes
     ----------
-    _conf : SaibyoConf
-        The configuration object containing the settings for the interpolator.
     _logger : logging.Logger
         The logger object to log messages.
-    _model : RifeModel
-        The RIFE model object used for interpolation.
-    _device : torch.device
-        The device to use for inference (CPU or GPU).
+    conf : SaibyoConf
+        The configuration object containing the settings for the interpolator.
 
     """
 
