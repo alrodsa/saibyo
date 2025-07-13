@@ -92,6 +92,19 @@ class VideoMetadata:
         seconds = int(total_seconds % 60)
         return f"{hours:02}:{minutes:02}:{seconds:02}"
 
+    @cached_property
+    def seconds(self) -> float:
+        """
+        Get the duration of the video in seconds.
+
+        Returns
+        -------
+        float
+            The duration of the video in seconds.
+
+        """
+        return self.total_frames / self.fps
+
     def __del__(self) -> None:
         """Release the video capture object."""
         if self.cap.isOpened():
