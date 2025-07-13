@@ -1,7 +1,7 @@
 from saibyo.base.conf.app import configure
 from saibyo.conf.conf import SaibyoConf
 from saibyo.constants.app import APP_NAME, ROOT_DIR
-from saibyo.core.comparator.comparator import Comparator
+from saibyo.core.comparation.comparator import Comparator
 
 
 def compare(video_a: str, video_b: str, output_path: str) -> None:
@@ -21,7 +21,7 @@ def compare(video_a: str, video_b: str, output_path: str) -> None:
     """
     conf = configure(APP_NAME, ROOT_DIR, SaibyoConf)
 
-    Comparator(conf).compare(video_a, video_b, output_path)
+    Comparator(conf.comparator).compare(video_a, video_b, output_path)
 
 
 
