@@ -5,7 +5,6 @@
       "--env-file",
       ".devcontainer/.env",
       "--add-host=host.docker.internal:host-gateway",
-      "--gpus=all",
       "--privileged"
     ],
     "mounts": [
