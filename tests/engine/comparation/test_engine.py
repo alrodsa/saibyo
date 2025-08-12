@@ -31,7 +31,7 @@ class TestComparationEngine(TestCase):
     @patch("saibyo.engine.comparation.engine.cv2.VideoWriter")
     @patch("saibyo.engine.comparation.engine.cv2.VideoCapture")
     @patch("saibyo.engine.comparation.engine.cv2.VideoWriter_fourcc")
-    def test_compare_happy_path(
+    def test_compare(
         self,
         mock_fourcc,
         mock_video_capture,
