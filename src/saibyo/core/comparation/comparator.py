@@ -11,6 +11,19 @@ from saibyo.metadata.video import VideoMetadata
 
 @dataclass(frozen=True)
 class Comparator:
+    """
+    Comparator class to handle video comparison using the ComparationEngine.
+    It uses the configuration settings from ComparatorConf to perform the comparison.
+
+    Attributes
+    ----------
+    _conf : ComparatorConf
+        Configuration settings for the comparator.
+    _logger : logging.Logger
+        Logger instance for logging messages.
+
+    """
+
     _conf: ComparatorConf
     _logger: logging.Logger = field(
         default_factory=lambda: logging.getLogger(APP_NAME)
@@ -46,4 +59,6 @@ class Comparator:
 
         # Save the comparison video to the specified output path
         self._logger.info(f"Comparison video saved to {output_path}.")
+
+        return comparation_video
 
