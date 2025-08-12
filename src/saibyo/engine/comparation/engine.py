@@ -85,3 +85,5 @@ class ComparationEngine:
         comparation_video.release()
 
         self._logger.info("[✅] Video comparison complete.")
+
+        return canvas
