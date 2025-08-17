@@ -55,6 +55,7 @@ jobs:
         run: .venv/bin/pytest --cov=saibyo tests/ -W ignore::DeprecationWarning --cov-report=xml --cov-report=term-missing
 
       - name: 📊 Upload Coverage Report to Codecov
+        if: github.ref == 'refs/heads/main'
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
