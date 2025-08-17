@@ -2,9 +2,9 @@ name: 🧪 CI - Python UV
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ develop, main ]
   pull_request:
-    branches: [ develop ]
+    branches: [ develop, main ]
 
 jobs:
   lint:
@@ -53,3 +53,9 @@ jobs:
 
       - name: 🧪 Run Tests
         run: .venv/bin/pytest --cov=saibyo tests/ -W ignore::DeprecationWarning --cov-report=xml --cov-report=term-missing
+
+      - name: 📊 Upload Coverage Report to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: alrodsa/saibyo
