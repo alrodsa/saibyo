@@ -1,5 +1,48 @@
 # Changelog
 
+## [0.11.0](https://github.com/alrodsa/saibyo/compare/v0.10.0...v0.11.0) (2025-08-17)
+
+
+### Features
+
+* add Codecov action to upload coverage reports ([a04cfab](https://github.com/alrodsa/saibyo/commit/a04cfabe7afbfc8577881aa3b9c6834af0b56a60))
+* add color conversion and frame manipulation functions for video processing ([d7de30c](https://github.com/alrodsa/saibyo/commit/d7de30c276c4d95eeda03f9b4e8a76de2384fe95))
+* add comparation documentation and update CI ([46bc737](https://github.com/alrodsa/saibyo/commit/46bc737a2d9ecda911bd1c6f88da780ca054fa16))
+* add Comparator class for video comparison functionality ([d3fa021](https://github.com/alrodsa/saibyo/commit/d3fa021027ef271e5003fa19d06e7c259a5a9110))
+* add compare function to create video comparisons ([dfe754a](https://github.com/alrodsa/saibyo/commit/dfe754a8fbc83dc47380f78a25dd7ed207cbdfd1))
+* add comparison functionality to RifeInterpolator documentation ([55afffb](https://github.com/alrodsa/saibyo/commit/55afffbf7c389ebf0d4a019c3075ca2312e471dd))
+* add configuration for video comparison and overlay text ([eacad1f](https://github.com/alrodsa/saibyo/commit/eacad1fbc8bb004a075422bcf8196e694a2c3374))
+* add demo GIF for visual representation of Saibyo capabilities ([55afffb](https://github.com/alrodsa/saibyo/commit/55afffbf7c389ebf0d4a019c3075ca2312e471dd))
+* add seconds property to VideoMetadata for video duration in seconds ([7848a71](https://github.com/alrodsa/saibyo/commit/7848a71440bdc941ad3a0bde94c91324021352cd))
+* implement Canvas class for video comparison rendering ([3b489b0](https://github.com/alrodsa/saibyo/commit/3b489b029f25b2662c13f0d5f3d727a671c0bcb0))
+* implement ComparationEngine for video comparison functionality ([9066e41](https://github.com/alrodsa/saibyo/commit/9066e41c875b9f7c259dfda5e07fd3ca723aec9d))
+* implement video comparison functionality and refactor related components ([eb0ba72](https://github.com/alrodsa/saibyo/commit/eb0ba724ae7d8d3b1d218645f32a8903ba6b5aba))
+* update constants for interpolation and comparison video configurations ([4dca6cf](https://github.com/alrodsa/saibyo/commit/4dca6cff7d11835e8d56dec6e5e6dcd2f37d65c6))
+* video comparator ([cfe4aee](https://github.com/alrodsa/saibyo/commit/cfe4aeea587aa699c2a094031d7da0a8f3992639))
+
+
+### Bug Fixes
+
+* change file permissions from 755 to 644 for multiple files ([3c1f4ba](https://github.com/alrodsa/saibyo/commit/3c1f4ba2a373457e74a769823d2867a653582573))
+* correct import path and comparator usage in compare function ([0f22633](https://github.com/alrodsa/saibyo/commit/0f22633a8347435437228ddee8156a29c63e498e))
+* correct import paths for RifeModel and BaseInterpolationModel ([d893f24](https://github.com/alrodsa/saibyo/commit/d893f2462d0a9a327a96ebd95918c1a838f6ea32))
+* ensure canvas is returned after video comparison completion ([2ec8264](https://github.com/alrodsa/saibyo/commit/2ec8264ad5fcf1465d6bcc3ee115727c20a0d92e))
+* lower coverage threshold from 100 to 80 ([483e147](https://github.com/alrodsa/saibyo/commit/483e147f0941763e65900efae102b50768aff97e))
+* remove unused import of Literal in configuration file ([d738d3d](https://github.com/alrodsa/saibyo/commit/d738d3de68e62162a7bc5427ee170a1936f95676))
+* reorder import statements for consistency in rife.py ([49fe5e2](https://github.com/alrodsa/saibyo/commit/49fe5e21a5b6b9ec68b5d0799a021272b066f047))
+* round fps value for video output to ensure proper frame rate ([b9a54f2](https://github.com/alrodsa/saibyo/commit/b9a54f2bfa248e67a71dbcfa0808b77a2db5e213))
+* update branch references from develop to main in release workflow ([6e665cb](https://github.com/alrodsa/saibyo/commit/6e665cb4b8dd6c67557034c7964cfb5de28cc61c))
+* update devcontainer configuration to include GPU support and remove unused environment variables ([f0796c4](https://github.com/alrodsa/saibyo/commit/f0796c4738c32afc0d17e4f95534a92282e14161))
+* update docstring for Comparator class to clarify attributes and functionality ([0d53f9a](https://github.com/alrodsa/saibyo/commit/0d53f9add4b6522ab276ad02063693367c021dc3))
+* update docstring to correct parameter section in RifeInterpolator class ([defcb58](https://github.com/alrodsa/saibyo/commit/defcb58ed298dcd95aa94987f852d0634bd859d9))
+* update package data path for model weights in pyproject.toml ([ac4a52e](https://github.com/alrodsa/saibyo/commit/ac4a52e00c53b29c9f0e63fa761c03aeca18e518))
+* update workflow to trigger on both develop and main branches ([81d869c](https://github.com/alrodsa/saibyo/commit/81d869c802c7b7fcac5109028dc48c73bd073fc8))
+
+
+### Documentation
+
+* update README to include video comparison features and usage instructions ([55afffb](https://github.com/alrodsa/saibyo/commit/55afffbf7c389ebf0d4a019c3075ca2312e471dd))
+
 ## [0.10.0](https://github.com/alrodsa/saibyo/compare/v0.9.0...v0.10.0) (2025-07-08)
 
 
