@@ -45,7 +45,7 @@ build-backend = "setuptools.build_meta"
 package-dir = { "saibyo" = "src/saibyo" }
 
 [tool.setuptools.package-data]
-"saibyo.model.weights" = ["flownet.pkl"]
+"saibyo.engine.interpolation.weights" = ["flownet.pkl"]
 
 [[tool.uv.index]]
 name = "dev-python"
