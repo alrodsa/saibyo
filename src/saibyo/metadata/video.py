@@ -1,6 +1,6 @@
 import logging
-from functools import cached_property
 import math
+from functools import cached_property
 from pathlib import Path
 
 import cv2

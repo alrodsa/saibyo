@@ -8,10 +8,36 @@ from saibyo.utils.comparation.frame import put_text
 
 
 class Canvas:
+    """
+    A class to handle the creation and manipulation of a canvas for video comparison.
+    This class provides methods to create a canvas, add overlay text, and compose
+    video frames.
+    """
+
     @staticmethod
     def dimensions_canvas(
         video_a: VideoMetadata, video_b: VideoMetadata, mode: ModeType
     ) -> tuple[int, int]:
+        """
+        Calculates the dimensions of the canvas based on the two videos and the
+        comparison mode.
+
+        Parameters
+        ----------
+        video_a : VideoMetadata
+            Metadata for the first video.
+        video_b : VideoMetadata
+            Metadata for the second video.
+        mode : ModeType
+            The mode of comparison, which can be "side_by_side", "top_bottom",
+            "split_half_vertical", or "split_half_horizontal".
+
+        Returns
+        -------
+        tuple[int, int]
+            The width and height of the canvas.
+
+        """
         match mode:
             case "side_by_side":
                 width = video_a.width + video_b.width
@@ -36,8 +62,30 @@ class Canvas:
         video_a: VideoMetadata,
         video_b: VideoMetadata,
         mode: str,
-        background_color: str  # color como string "#RRGGBB"
+        background_color: str
     ) -> np.ndarray:
+        """
+        Creates a canvas for video comparison based on the specified mode and
+        background color.
+
+        Parameters
+        ----------
+        video_a : VideoMetadata
+            Metadata for the first video.
+        video_b : VideoMetadata
+            Metadata for the second video.
+        mode : str
+            The mode of comparison, which can be "side_by_side", "top_bottom",
+            "split_half_vertical", or "split_half_horizontal".
+        background_color : str
+            The background color for the canvas in hex format (e.g., "#RRGGBB").
+
+        Returns
+        -------
+        np.ndarray
+            The created canvas as a NumPy array.
+
+        """
         width, height = Canvas.dimensions_canvas(video_a, video_b, mode)
         rgb_color = hex_to_rgb(background_color)
 
@@ -51,6 +99,31 @@ class Canvas:
         video_b: VideoMetadata,
         mode: str
     ) -> np.ndarray:
+        """
+        Adds overlay text to two video frames based on the specified mode.
+
+        Parameters
+        ----------
+        frame_a : np.ndarray
+            The first video frame to which the text will be added.
+        frame_b : np.ndarray
+            The second video frame to which the text will be added.
+        video_a : VideoMetadata
+            Metadata for the first video, containing information such as FPS and
+            input path.
+        video_b : VideoMetadata
+            Metadata for the second video, containing information such as FPS and
+            input path.
+        mode : str
+            The mode of comparison, which can be "side_by_side", "top_bottom",
+            "split_half_vertical", or "split_half_horizontal".
+
+        Returns
+        -------
+        tuple[np.ndarray, np.ndarray]
+            The two video frames with the text overlay added.
+
+        """
         match mode:
             case "side_by_side" | "top_bottom":
                 frame_a = put_text(frame_a, video_a, "bottom_left")
@@ -74,6 +147,27 @@ class Canvas:
         frame_b: np.ndarray,
         mode: ModeType
     ) -> np.ndarray:
+        """
+        Composes two frames onto a canvas based on the specified mode.
+
+        Parameters
+        ----------
+        canvas : np.ndarray
+            The canvas onto which the frames will be composed.
+        frame_a : np.ndarray
+            The first video frame to be added to the canvas.
+        frame_b : np.ndarray
+            The second video frame to be added to the canvas.
+        mode : ModeType
+            The mode of composition, which can be "side_by_side", "top_bottom",
+            "split_half_vertical", or "split_half_horizontal".
+
+        Returns
+        -------
+        np.ndarray
+            The canvas with the two frames composed onto it.
+
+        """
         canvas_h, canvas_w = canvas.shape[:2]
 
         if mode == "side_by_side":

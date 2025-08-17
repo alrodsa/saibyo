@@ -15,6 +15,18 @@ from saibyo.utils.comparation.frame import frame_at_time
 
 @dataclass(frozen=True)
 class ComparationEngine:
+    """
+    A class to handle video comparison using specified configuration settings.
+
+    Attributes
+    ----------
+    _conf : ComparatorConf
+        Configuration settings for the comparison engine.
+    _logger : logging.Logger
+        Logger instance for logging messages during the comparison process.
+
+    """
+
     _conf: ComparatorConf
     _logger: logging.Logger = field(
         default_factory=lambda: logging.getLogger(APP_NAME)
@@ -23,6 +35,25 @@ class ComparationEngine:
     def compare(
         self, video_a: VideoMetadata, video_b: VideoMetadata, output_path: str
     ) -> np.ndarray:
+        """
+        Compares two videos and creates a composite video with the specified
+        comparison mode.
+
+        Parameters
+        ----------
+        video_a : VideoMetadata
+            Metadata for the first video.
+        video_b : VideoMetadata
+            Metadata for the second video.
+        output_path : str
+            The path where the output video will be saved.
+
+        Returns
+        -------
+        np.ndarray
+            The composite video frame with the comparison applied.
+
+        """
         video_a.info()
         video_b.info()
 

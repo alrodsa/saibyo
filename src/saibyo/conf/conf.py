@@ -82,7 +82,7 @@ class ComparatorConf(BaseSettings):
         Configuration for the overlay text in the comparison video.
     background_color : str
         Background color for borders or empty areas in the comparison video.
-    mode : Literal["side_by_side", "top_bottom", "checkerboard", "split_half_vertical", "split_half_horizontal"]
+    mode : ModeType
         Layout for video comparison, can be either 'side_by_side', 'top_bottom',
         'split_half_vertical', or 'split_half_horizontal'.
 

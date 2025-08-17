@@ -1,7 +1,6 @@
 # -------- INTERPOLATION CONSTANTS --------
 from typing import Literal
 
-
 COMPARATION_DESCRIPTION = (
     "Creates an extra video that compares the original video with the "
     "interpolated video, showing the differences between them."
