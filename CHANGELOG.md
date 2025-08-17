@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.1](https://github.com/alrodsa/saibyo/compare/v0.10.0...v0.10.1) (2025-08-17)
+
+
+### Bug Fixes
+
+* round fps value for video output to ensure proper frame rate ([b9a54f2](https://github.com/alrodsa/saibyo/commit/b9a54f2bfa248e67a71dbcfa0808b77a2db5e213))
+
 ## [0.10.0](https://github.com/alrodsa/saibyo/compare/v0.9.0...v0.10.0) (2025-07-08)
 
 
