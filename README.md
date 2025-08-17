@@ -303,7 +303,17 @@ python main.py interpolate input_path output_folder
 ```
 
 #### 2️⃣ Programmatic API Usage
-#### 2️⃣ Programmatic API Usage
+
+### Interpolating Video Frames
+
+The `interpolate` functionality in Saibyo can be executed in two main ways:
+
+#### 1️⃣ Command-Line Interface (CLI)
+
+Run the interpolation directly using the CLI:
+
+```bash
+python main.py interpolate input_path output_folder
 
 Invoke the interpolation in your Python code:
 
