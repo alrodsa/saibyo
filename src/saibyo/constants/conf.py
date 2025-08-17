@@ -1,3 +1,6 @@
+# -------- INTERPOLATION CONSTANTS --------
+from typing import Literal
+
 COMPARATION_DESCRIPTION = (
     "Creates an extra video that compares the original video with the "
     "interpolated video, showing the differences between them."
@@ -18,3 +21,36 @@ EXPONENTIAL_DESCRIPTION = (
     "This allows for flexible control over the frame rate increase during "
     "interpolation."
 )
+
+# --------- OVERLAY TEXT CONSTANTS ---------
+OVERLAY_TEXT_DESCRIPTION = (
+    "Display overlay with video source info (e.g., FPS, name)"
+)
+TEXT_POSITION_DESCRIPTION = (
+    "Position of overlay text. Options are: 'top_left', 'bottom_left', "
+    "'top_right', 'bottom_right'."
+)
+TextPositionType = Literal[
+    "top_left", "bottom_left", "top_right", "bottom_right"
+]
+
+# --------- COMPARATOR CONSTANTS ---------
+BACKGROUND_COLOR_DESCRIPTION = (
+    "The background color of the comparison video. "
+    "It can be specified in hexadecimal format (e.g., '#000000' for black"
+    " or '#FFFFFF' for white)."
+)
+MODE_DESCRIPTION = (
+    "The mode of the comparison video. "
+    "It can be either 'side_by_side' or 'overlay'. "
+    "'side_by_side' places the original and interpolated videos next to each "
+    "other, while 'overlay' places the interpolated video on top of the "
+    "original video."
+)
+ModeType = Literal[
+    "side_by_side",
+    "top_bottom",
+    "split_half_vertical",
+    "split_half_horizontal"
+]
+

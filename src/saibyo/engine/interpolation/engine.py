@@ -9,7 +9,7 @@ from tqdm import tqdm
 from saibyo.conf.conf import SaibyoConf
 from saibyo.constants.app import APP_NAME, SSIM_0_2, SSIM_0_996, WEIGHTS_DIR
 from saibyo.core.io.video import VideoIOManager
-from saibyo.model.interpolation.rife import RifeModel
+from saibyo.engine.interpolation.rife import RifeModel
 from saibyo.utils.interpolation.msssim import ssim_matlab
 
 

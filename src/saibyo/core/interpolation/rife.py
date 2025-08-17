@@ -7,8 +7,8 @@ from saibyo.conf.conf import SaibyoConf
 from saibyo.constants.app import APP_NAME
 from saibyo.core.interpolation.interpolator import BaseInterpolator
 from saibyo.core.io.video import VideoIOManager
+from saibyo.engine.interpolation.engine import RifeEngine
 from saibyo.metadata.video import VideoMetadata
-from saibyo.model.interpolation.engine import RifeEngine
 from saibyo.utils.interpolation.audio import transfer_audio
 
 
@@ -21,16 +21,12 @@ class RifeInterpolator(BaseInterpolator):
     a method to run the interpolation on a given input folder containing
     original frames and save the interpolated frames to a given output folder.
 
-    Parameters
+    Attributes
     ----------
-    _conf : SaibyoConf
-        The configuration object containing the settings for the interpolator.
     _logger : logging.Logger
         The logger object to log messages.
-    _model : RifeModel
-        The RIFE model object used for interpolation.
-    _device : torch.device
-        The device to use for inference (CPU or GPU).
+    conf : SaibyoConf
+        The configuration object containing the settings for the interpolator.
 
     """
 

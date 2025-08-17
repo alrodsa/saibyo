@@ -5,8 +5,8 @@
       "--env-file",
       ".devcontainer/.env",
       "--add-host=host.docker.internal:host-gateway",
-      "--gpus=all",
-      "--privileged"
+      "--privileged",
+      "--gpus=all"
     ],
     "mounts": [
       "source=/usr/share/vulkan/icd.d,target=/usr/share/vulkan/icd.d,type=bind,readonly",
@@ -16,8 +16,6 @@
     "containerEnv": {
       "NVIDIA_VISIBLE_DEVICES": "all",
       "NVIDIA_DRIVER_CAPABILITIES": "compute,utility,graphics",
-      "XDG_RUNTIME_DIR": "/run/user/1000",
-      "VK_ICD_FILENAMES": "/usr/share/vulkan/icd.d/nvidia_icd.json"
     },
     "postCreateCommand": ".devcontainer/post-create.sh",
     "postAttachCommand": ". .venv/bin/activate",

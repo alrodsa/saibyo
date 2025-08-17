@@ -1,7 +1,7 @@
 import torch
 from attrs import define
 
-from saibyo.model.interpolation.base import BaseInterpolationModel
+from saibyo.engine.interpolation.base import BaseInterpolationModel
 from saibyo.modules.interpolation.ifnet import IFNet
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
