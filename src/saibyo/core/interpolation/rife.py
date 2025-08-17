@@ -43,8 +43,7 @@ class RifeInterpolator(BaseInterpolator):
         input_path : str
             The path to the input video that will be fps boosted using interpolation.
         output_folder : str
-            The path to the output folder where both the original and
-            interpolated frames will be stored.
+            The path to the output folder where the interpolated video will be saved.
 
         """
         video = VideoMetadata(input_path=input_path)
