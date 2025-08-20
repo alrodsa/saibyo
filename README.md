@@ -33,14 +33,12 @@ check out the video for a better understanding in the [YouTube Demo](https://you
 - 🎞️ Creating slow-motion effects
 - 🧪 Preprocessing datasets for computer vision tasks
 - 📊 Comparing videos side-by-side with different visualization modes
-- 📊 Comparing videos side-by-side with different visualization modes
 
 ### What Saibyo Does
 
 - Takes a sequence of video frames as input.
 - Uses a configurable number of intermediate frames per pair, controlled by the `exp` parameter (e.g., `exp=2` → 3 new frames per pair).
 - Outputs an enriched sequence of frames to a specified directory.
-- Supports videos side-by-side comparison with various visualization modes.
 - Supports videos side-by-side comparison with various visualization modes.
 
 ### Features
@@ -49,24 +47,20 @@ check out the video for a better understanding in the [YouTube Demo](https://you
 - 🧬 Pydantic-based configuration system via `.conf` files or environment variables.
 - ⚙️ Support for batch processing and parallel data loading via `num_workers`.
 - 🎨 Multiple comparison modes: `side_by_side`, `top_bottom`, `split_half_vertical`, `split_half_horizontal`.
-- 🎨 Multiple comparison modes: `side_by_side`, `top_bottom`, `split_half_vertical`, `split_half_horizontal`.
 
 ---
 
 ## ⚙️ Setting up `SaibyoConf` variables
 
 Saibyo provides a flexible configuration system powered by **Pydantic Settings**, enabling users to configure interpolation and comparison behavior either through `.conf` files or directly via environment variables.
-Saibyo provides a flexible configuration system powered by **Pydantic Settings**, enabling users to configure interpolation and comparison behavior either through `.conf` files or directly via environment variables.
 
 ### 🧬 Configuration Structure in Code
 
-The main configuration model for Saibyo flow is defined in `src/saibyo/conf/conf.py`, the pydantic schema for all Saibyo is defined as follows:
 The main configuration model for Saibyo flow is defined in `src/saibyo/conf/conf.py`, the pydantic schema for all Saibyo is defined as follows:
 
 ```python
 class SaibyoConf(Conf, BaseSettings):
     interpolator: InterpolatorConf = Field(default_factory=InterpolatorConf)
-    comparison: ComparisonConf = Field(default_factory=ComparisonConf)
     comparison: ComparisonConf = Field(default_factory=ComparisonConf)
 
     model_config = SettingsConfigDict(env_prefix="SAIBYO_")
@@ -123,6 +117,7 @@ The configuration model used by Saibyo for video comparison is defined as follow
             env_prefix="SAIBYO_COMPARATOR_OVERLAY_TEXT_"
         )
 ```
+
 #### _Interpolator Configuration_
 
 The configuration model used by Saibyo for interpolation is defined as follows:
@@ -230,19 +225,7 @@ text.position=bottom_left
 You can also configure Saibyo directly via environment variables, without relying on `.conf` files. This is ideal for containerized deployments or CI environments.
 
 The `InterpolatorConf` uses the prefix `SAIBYO_INTERPOLATOR_` while the `ComparatorConf` uses `SAIBYO_COMPARATOR_`. The value and the description of each variable are as follows:
-The `InterpolatorConf` uses the prefix `SAIBYO_INTERPOLATOR_` while the `ComparatorConf` uses `SAIBYO_COMPARATOR_`. The value and the description of each variable are as follows:
 
-| Environment Variable                         | Description                                                                 | Default       |
-|----------------------------------------------|-----------------------------------------------------------------------------|---------------|
-| `SAIBYO_INTERPOLATOR_COMPARATION`            | If `true`, generates an extra comparison video alongside the interpolated one | `false`       |
-| `SAIBYO_INTERPOLATOR_LIGHTWEIGHT`            | If `true`, uses fp16 inference (faster, less memory, slightly lower quality) | `true`        |
-| `SAIBYO_INTERPOLATOR_EXPONENTIAL`            | Exponent for FPS multiplier (`2 ** exp`) → `1=×2`, `2=×4`, `3=×8`            | `2`           |
-| `SAIBYO_COMPARATOR_BACKGROUND_COLOR`         | Background color in hex (for borders/empty areas in comparison)              | `#000000`     |
-| `SAIBYO_COMPARATOR_MODE`                     | Layout mode: `side_by_side`, `top_bottom`, `split_half_vertical`, `split_half_horizontal` | `side_by_side` |
-| `SAIBYO_COMPARATOR_OVERLAY_TEXT_OVERLAY`     | If `true`, draws overlay text with FPS & filename                           | `true`        |
-| `SAIBYO_COMPARATOR_OVERLAY_TEXT_POSITION`    | Overlay text position: `top_left`, `top_right`, `bottom_left`, `bottom_right` | `top_left`    |
-
-This variables can be set in your shell or in a `.env` file. For example, to set the variables in above table, it can be done as follows:
 | Environment Variable                         | Description                                                                 | Default       |
 |----------------------------------------------|-----------------------------------------------------------------------------|---------------|
 | `SAIBYO_INTERPOLATOR_COMPARATION`            | If `true`, generates an extra comparison video alongside the interpolated one | `false`       |
@@ -305,7 +288,6 @@ Invoke the interpolation in your Python code:
 ```python
 conf = configure(APP_NAME, ROOT_DIR, SaibyoConf)
 Interpolator(conf).run(
-    input_path=input_path,
     input_path=input_path,
     output_folder=output_folder,
 )
