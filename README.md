@@ -273,7 +273,6 @@ export SAIBYO_COMPARATOR_OVERLAY_TEXT_POSITION=bottom_left
 
 The `interpolate` functionality in Saibyo can be executed in two main ways:
 
-
 #### 1️⃣ Command-Line Interface (CLI)
 
 Run the interpolation directly using the CLI:
@@ -291,54 +290,5 @@ conf = configure(APP_NAME, ROOT_DIR, SaibyoConf)
 Interpolator(conf).run(
     input_path=input_path,
     output_folder=output_folder,
-)
-```
-
-### 📊 Video Comparison
-
-The `compare` functionality allows you to visualize two videos side-by-side or in other layouts. It can also be run in two ways:
-
-#### 1️⃣ Command-Line Interface (CLI)
-
-Run the comparison directly using the CLI:
-
-```bash
-python main.py compare video1_path video2_path output_folder
-```
-
-#### 2️⃣ Programmatic API Usage
-
-Invoke the comparison in your Python code:
-
-```python
-conf = configure(APP_NAME, ROOT_DIR, SaibyoConf)
-Comparator(conf).compare(
-    video1_path=video1_path,
-    video2_path=video2_path,
-    output_path=output_path,
-)
-```
-### 📊 Video Comparison
-
-The `compare` functionality allows you to visualize two videos side-by-side or in other layouts. It can also be run in two ways:
-
-#### 1️⃣ Command-Line Interface (CLI)
-
-Run the comparison directly using the CLI:
-
-```bash
-python main.py compare video1_path video2_path output_folder
-```
-
-#### 2️⃣ Programmatic API Usage
-
-Invoke the comparison in your Python code:
-
-```python
-conf = configure(APP_NAME, ROOT_DIR, SaibyoConf)
-Comparator(conf).compare(
-    video1_path=video1_path,
-    video2_path=video2_path,
-    output_path=output_path,
 )
 ```

@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.11.1](https://github.com/alrodsa/saibyo/compare/v0.11.0...v0.11.1) (2025-08-17)
+
+
+### Bug Fixes
+
+* add condition to upload coverage report only for main branch ([39f3bcc](https://github.com/alrodsa/saibyo/commit/39f3bcc9c7846f6654083e10889e94ec64336d9a))
+
+
+### Documentation
+
+* enhance README with configuration details and usage examples for video comparison ([bc48da7](https://github.com/alrodsa/saibyo/commit/bc48da72456de31d8998d05e9c76719928ebafd8))
+
 ## [0.10.0](https://github.com/alrodsa/saibyo/compare/v0.9.0...v0.10.0) (2025-07-08)
 
 
