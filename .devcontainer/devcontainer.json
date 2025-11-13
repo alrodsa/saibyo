@@ -24,7 +24,47 @@
         "ms-python.vscode-pylance",
         "ms-vscode.test-adapter-converter",
         "github.vscode-github-actions"
-      ]
+      ],
+      "settings": {
+        "files.exclude": {
+          "**/.git": true,
+          "**/__pycache__": true,
+          "**/__pypackages__": true,
+          "**/*.egg-info": true,
+          "**/.coverage": true,
+          "**/.idea": true,
+          "**/.pytest_cache": true,
+          "**/.ruff_cache": true,
+          "**/.pdm-python": true
+        },
+        "files.autoSave": "afterDelay",
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        "python.analysis.indexing": true,
+        "python.languageServer": "Pylance",
+        "python.analysis.autoImportCompletions": true,
+        "python.analysis.typeCheckingMode": "basic",
+        "python.analysis.importFormat": "absolute",
+        "python.analysis.autoSearchPaths": true,
+        "python.terminal.activateEnvInCurrentTerminal": true,
+        "python.testing.pytestEnabled": true,
+        "python.testing.unittestArgs": ["-p", "*test*.py"],
+        "python.testing.cwd": "${workspaceFolder}",
+        "python.testing.unittestEnabled": false,
+        "python.defaultInterpreterPath": ".venv/bin/python",
+        "python.pythonPath": ".venv/bin/python",
+        "python.analysis.diagnosticSeverityOverrides": {
+          "reportGeneralTypeIssues": "none",
+          "reportCallIssue": "none",
+          "reportArgumentType": "none",
+          "reportAttributeAccessIssue": "none",
+          "reportReturnType": "none"
+        },
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": { "path": "zsh", "icon": "terminal-bash" },
+          "bash": { "path": "bash", "icon": "terminal-bash" }
+        }
     }
   }
 }
