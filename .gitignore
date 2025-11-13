@@ -16,6 +16,7 @@ venv/
 
 # Dev container files
 .devcontainer/.env
+.devcontainer/devcontainer.override.json
 
 # Local development files
 test.py
