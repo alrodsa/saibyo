@@ -1,8 +1,28 @@
 {
-  "name": "saibyo",
+  "name": "saibyo-gpu",
   "dockerFile": "Dockerfile",
 
-  "preCreateCommand": "bash .devcontainer/select-config.sh",
+  "runArgs": [
+    "--env-file",
+    ".devcontainer/.env",
+    "--add-host=host.docker.internal:host-gateway",
+    "--privileged",
+    "--gpus=all"
+  ],
+
+  "mounts": [
+    "source=/usr/share/vulkan/icd.d,target=/usr/share/vulkan/icd.d,type=bind,readonly",
+    "source=/dev/dri,target=/dev/dri,type=bind"
+  ],
+
+  "containerEnv": {
+    "NVIDIA_VISIBLE_DEVICES": "all",
+    "NVIDIA_DRIVER_CAPABILITIES": "compute,utility,graphics"
+  },
+
+  "features": {
+    "ghcr.io/devcontainers/features/nvidia-cuda:1": {}
+  },
 
   "postCreateCommand": ".devcontainer/post-create.sh",
   "postAttachCommand": ". .venv/bin/activate",
@@ -28,3 +48,4 @@
     }
   }
 }
+

@@ -44,25 +44,10 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && getent group render || groupadd -g $RENDER_GID render \
     && usermod -aG render $USERNAME
 
-# Instala rife-ncnn-vulkan
-RUN mkdir -p /opt/rife-ncnn && \
-    wget -O /opt/rife-ncnn/rife.zip https://github.com/nihui/rife-ncnn-vulkan/releases/download/20220728/rife-ncnn-vulkan-20220728-ubuntu.zip && \
-    unzip /opt/rife-ncnn/rife.zip -d /opt/rife-ncnn && \
-    mv /opt/rife-ncnn/rife-ncnn-vulkan-20220728-ubuntu /opt/rife-ncnn/rife-ncnn-vulkan && \
-    chmod +x /opt/rife-ncnn/rife-ncnn-vulkan/rife-ncnn-vulkan && \
-    ln -s /opt/rife-ncnn/rife-ncnn-vulkan/rife-ncnn-vulkan /usr/local/bin/rife-ncnn && \
-    rm /opt/rife-ncnn/rife.zip
-
-# Instala Google Cloud SDK (gcloud)
-RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
-    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
-    gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg && \
-    apt update -y && apt install -y google-cloud-sdk
-
 USER $USERNAME
 
 # Instala uv y otras herramientas
-RUN pip install --user uv label-studio
+RUN pip install --user uv
 
 # Instala zsh personalizado
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- -t robbyrussell
