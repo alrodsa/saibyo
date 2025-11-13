@@ -1,8 +1,9 @@
-name: 🚀 Publish Saibyo to GitHub Releases & GCP Artifact Registry
+name: 🚀 Publish Saibyo to GitHub Releases & PyPI
 
 on:
   push:
-    branches: [main]
+    tags:
+      - "v*"
 
 jobs:
   publish:
@@ -11,7 +12,6 @@ jobs:
 
     permissions:
       contents: write
-      id-token: write  # Necesario para autenticación federada
 
     steps:
       - name: 📥 Checkout code
@@ -20,59 +20,35 @@ jobs:
       - name: 🐍 Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
-      - name: ⚙️ Install uv and publish dependencies
+      - name: ⚙️ Install build & publish deps
         run: |
-          echo "⚡ Creating virtualenv with uv..."
-          pip install uv
-          uv venv
-          source .venv/bin/activate
-          uv pip install -e ".[publish]"
+          pip install build twine
 
-      - name: 🏷 Extract version
-        id: get_version
+      - name: 🏗 Build wheel & sdist
         run: |
-          echo "🔍 Extracting version from pyproject.toml..."
-          source .venv/bin/activate
-          VERSION=$(.venv/bin/python -c "import tomli; print(tomli.load(open('pyproject.toml', 'rb'))['project']['version'])")
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          python -m build
 
-      - name: 💠 Build wheel
+      - name: 🛡 Ensure artifacts exist
         run: |
-          echo "💠 Building the package..."
-          source .venv/bin/activate
-          .venv/bin/python -m build --wheel
-
-      - name: 🛡 Ensure wheel exists
-        run: |
-          ls dist/*.whl || (echo "❌ No wheel found in dist/" && exit 1)
+          ls dist/* || (echo "❌ No artifacts in dist/" && exit 1)
 
       - name: 📤 Upload to GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{ env.VERSION }}
-          name: saibyo v${{ env.VERSION }}
+          tag_name: ${{ github.ref_name }}
+          name: "saibyo ${{ github.ref_name }}"
           body_path: CHANGELOG.md
           files: |
             dist/*.whl
-            src/saibyo/model/weights/flownet.pkl
+            dist/*.tar.gz
+            src/saibyo/engine/interpolation/weights/flownet.pkl
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🔐 Authenticate with Workload Identity Federation
-        id: auth
-        uses: google-github-actions/auth@v2
+      - name: 📦 Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          token_format: access_token
-          workload_identity_provider: ${{ secrets.IDENTITY_PROVIDER }}
-          service_account: ${{ secrets.IDENTITY_PROVIDER_ACCOUNT }}
-
-      - name: 🚀 Upload to GCP Artifact Registry with uv
-        run: |
-          echo "🚀 Publishing to Artifact Registry..."
-          source .venv/bin/activate
-          uv publish --index dev-python \
-            --username oauth2accesstoken \
-            --password ${{ steps.auth.outputs.access_token }} \
-            --keyring-provider subprocess
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}

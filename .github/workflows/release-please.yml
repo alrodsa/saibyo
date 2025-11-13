@@ -5,19 +5,20 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   release:
-    name: 🚀 Create Release PR
+    name: 🚀 Release Please
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout repository
-        uses: actions/checkout@v4
-
       - name: 🤖 Run Release Please
-        uses: googleapis/release-please-action@v4
+        uses: google-github-actions/release-please-action@v4
         with:
           release-type: python
           package-name: saibyo
-          path: .
-          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          default-branch: main
+          token: ${{ secrets.GITHUB_TOKEN }}
