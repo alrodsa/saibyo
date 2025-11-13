@@ -85,7 +85,9 @@
           "zsh": { "path": "zsh", "icon": "terminal-bash" },
           "bash": { "path": "bash", "icon": "terminal-bash" }
         }
+      }
     }
   }
 }
+
 
