@@ -81,9 +81,10 @@ ModeType = Literal[
 
 Two full videos placed horizontally next to each other. As shown below:
 
-![side_by_side](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGI4Y2QzaHJhNXV1NmMwY254YTJ4dG5laTIwd3JkZDJ1aTJwaWx3eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WeKp0kIX9PrvhiCUDh/giphy.gif)
+![side_by_side](/assets/images/side-by-side.png)
 
 ### Best for:
+
 - Direct visual comparison
 - Horizontal footage
 
@@ -91,21 +92,20 @@ Two full videos placed horizontally next to each other. As shown below:
 
 Two full videos stacked vertically.
 
-![top_bottom](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXVsOTA5NHFiOG5kb29hMGE4bHZ5NXM0N2dteGY1eTR4bHJleGkxMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IjudFqP0BsL5nbX3Ep/giphy.gif)
-
+![top_bottom](/assets/images/top-bottom.png)
 Best for mobile screens or long‑aspect content.
 
 ### 🟨 3. `split_half_vertical`
 A single composite frame where the **left half** is Video A and the **right half** is Video B.
 
-![split_half_vertical](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWt4Z2lwbTI1ZWc1OGsyYzc4NWxqbnZiZWxoM2h1NTlzaWUzemtucCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NDxKHa0IJ8pJNm4DW1/giphy.gif)
+![split_half_vertical](/assets/images/split-half-vertical.png)
 
 
 ### 🟦 4. `split_half_horizontal`
 
 A single composite frame where the **top** is Video A and the **bottom** is Video B.
 
-![split_half_horizontal](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3pkem5qN2dhYzA0czN5NDM2dnZhcnY5azZnaWQ2eXoyOWhham0yZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/PKI2iwYPO2FJNVEx9D/giphy.gif)
+![split_half_horizontal](/assets/images/split-half-horizontal.png)
 
 Best for progressive motion comparisons.
 
