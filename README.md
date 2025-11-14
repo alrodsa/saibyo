@@ -37,10 +37,12 @@
 </p>
 
 
-<img src="assets/gifs/f1-comparation.gif" width="100%"/>
+<img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGI4Y2QzaHJhNXV1NmMwY254YTJ4dG5laTIwd3JkZDJ1aTJwaWx3eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WeKp0kIX9PrvhiCUDh/giphy.gif" width="100%"/>
 
 > ⚠️ **IMPORTANT:** Above gif could not show the full potential of Saibyo fps boost,
 check out the video for a better understanding in the [YouTube Demo](https://youtu.be/NByIRUQXoUE).
+
+> 📝 **NOTE:** It is important to mention that due to youtube restrictions, the maximum fps of a video is 60fps. Even do, you will be able to feel the difference in smoothness with higher fps videos.
 
 ## 📖 Overview
 
@@ -99,9 +101,13 @@ Interpolator(conf).run(
     input_path=input_path,
     output_folder=output_folder,
 )
+Comparator(conf.comparator).compare(
+    video_a=input_path,
+    video_b=output_path,
+    output_path="path/to/comparison_output.mp4"
 ```
 
-> 📚 For more Python API options, refer to the Python API documentation at [`docs/python-api.md`](docs/python-api.md)
+> 📚 For more Python API options, refer to the Python API documentation [`docs/python-api.md`](docs/python-api.md) and [`docs/comparison-modes.md`](docs/comparison-modes.md)
 
 ## ⚙️ Configuration
 
@@ -121,7 +127,7 @@ Saibyo includes built-in comparison utilities, allowing users to visualize the d
 - split_half_vertical
 - split_half_horizontal
 
-> 📚 For more detailed comparison mode options, refer to the comparison modes documentation at [`docs/comparison-modes.md`](docs/comparison-modes.md)
+> 📚 For more detailed comparison mode options and how to run this command, refer to the comparison modes documentation at [`docs/comparison-modes.md`](docs/comparison-modes.md)
 
 ## 🗺️ Roadmap
 
@@ -150,6 +156,14 @@ Expanding the range of supported machine learning models for frame interpolation
 - Integration of state-of-the-art models like IFRNet and FLAVR.
 - Enhanced interpolation quality.
 - More customization options for users.
+
+### Output video compression
+
+To optimize storage space and improve video playback performance, Saibyo will introduce options for compressing output videos without significant loss of quality. This feature will offer:
+
+- Various compression algorithms.
+- User-defined quality settings.
+- Reduced file sizes.
 
 ## 📄 License
 
