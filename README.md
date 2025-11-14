@@ -1,4 +1,7 @@
-# 📦 Saibyo — Deep Learning Video Frame Interpolation
+
+![Saibyo Logo](/assets/images/saibyo-logo.png)
+
+
 
 <p align="center">
   <!-- PyPI -->
@@ -37,7 +40,7 @@
 </p>
 
 
-![Saibyo Demo](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGI4Y2QzaHJhNXV1NmMwY254YTJ4dG5laTIwd3JkZDJ1aTJwaWx3eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WeKp0kIX9PrvhiCUDh/giphy.gif)
+![Saibyo Demo](/assets/images/demo.gif)
 
 > ⚠️ **IMPORTANT:** Above gif could not show the full potential of Saibyo fps boost,
 check out the video for a better understanding in the [YouTube Demo](https://youtu.be/NByIRUQXoUE).
@@ -169,6 +172,6 @@ To optimize storage space and improve video playback performance, Saibyo will in
 
 Saibyo is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
-## 👤 Author emoji
+## 👤 Author
 
 - **Alvaro R.** - [alrodsa](https://github.com/alrodsa)
