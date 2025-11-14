@@ -1,294 +1,160 @@
-# 📦 Saibyo: Deep Learning Video Frame Interpolation Library
+# 📦 Saibyo — Deep Learning Video Frame Interpolation
 
-[![CI - Python UV](https://img.shields.io/badge/CI-Python%20UV-blue?logo=githubactions)](https://github.com/alrodsa/saibyo/actions/workflows/python-ci.yml)
-[![Codecov](https://codecov.io/gh/alrodsa/saibyo/branch/develop/graph/badge.svg)](https://app.codecov.io/gh/alrodsa/saibyo)
-[![Publish](https://img.shields.io/badge/Publish-Package-orange?logo=pypi)](https://github.com/alrodsa/saibyo/actions/workflows/publish.yml)
-[![Release](https://img.shields.io/badge/Release-Automated-green?logo=github)](https://github.com/alrodsa/saibyo/actions/workflows/release-please.yml)
-[![YouTube Demo](https://img.shields.io/badge/YouTube-Demo-red?logo=youtube)](https://youtu.be/NByIRUQXoUE)
+<p align="center">
+  <!-- PyPI -->
+  <a href="https://pypi.org/project/saibyo/">
+    <img src="https://img.shields.io/pypi/v/saibyo?logo=pypi&logoColor=white&label=PyPI&style=for-the-badge" alt="PyPI Version"/>
+  </a>
+  <!-- Release -->
+<a href="https://github.com/alrodsa/saibyo/releases">
+  <img src="https://img.shields.io/github/v/release/alrodsa/saibyo?label=Release&logo=github&logoColor=white&style=for-the-badge" alt="Latest Release"/>
+</a>
+  <!-- Coverage -->
+  <a href="https://codecov.io/gh/alrodsa/saibyo">
+    <img src="https://img.shields.io/codecov/c/github/alrodsa/saibyo?logo=codecov&logoColor=white&style=for-the-badge" alt="Coverage"/>
+  </a>
+  <!-- Python version -->
+  <img src="https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white&style=for-the-badge" alt="Python Version"/>
+  <!-- Linter -->
+  <img src="https://img.shields.io/badge/linter-ruff-yellow?logo=ruff&logoColor=white&style=for-the-badge" alt="Linter"/>
+  <!-- Lint -->
+  <a href="https://github.com/alrodsa/saibyo/actions/workflows/python-ci.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/alrodsa/saibyo/python-ci.yml?branch=main&label=Lint&logo=github&logoColor=white&style=for-the-badge" alt="Lint Status"/>
+  </a>
+  <!-- CI workflow -->
+  <a href="https://github.com/alrodsa/saibyo/actions/workflows/python-ci.yml">
+  <img src="https://img.shields.io/github/actions/workflow/status/alrodsa/saibyo/python-ci.yml?label=CI&logo=githubactions&logoColor=white&style=for-the-badge" alt="CI Status"/>
+  </a>
+  <!-- License -->
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/license-MIT-green?logo=open-source-initiative&logoColor=white&style=for-the-badge" alt="License: MIT"/>
+  </a>
+  <!-- Demo Video -->
+  <a href="https://youtu.be/NByIRUQXoUE">
+    <img src="https://img.shields.io/badge/Video-Demo-red?logo=youtube&logoColor=white&style=for-the-badge" al
+    t="Demo Video"/>
+  </a>
+</p>
 
-![Demo GIF](assets/gifs/f1-comparation.gif)
+
+<img src="assets/gifs/f1-comparation.gif" width="100%"/>
 
 > ⚠️ **IMPORTANT:** Above gif could not show the full potential of Saibyo fps boost,
 check out the video for a better understanding in the [YouTube Demo](https://youtu.be/NByIRUQXoUE).
 
-## 🧭 Table of Contents
+## 📖 Overview
 
-- [🔎 Overview](#🔎-overview)
-- [⚙️ Setting up `SaibyoConf` variables](#️-setting-up-saibyoconf-variables)
-  - [🧬 Configuration Structure in Code](#-configuration-structure-in-code)
-  - [🔧 Configuration Methods](#-configuration-methods)
-    - [1️⃣ Using `.conf` files](#1️⃣-using-conf-files)
-    - [2️⃣ Using Environment Variables](#2️⃣-using-environment-variables)
-- [🚀 Usage: Interpolating Video Frames](#🚀-usage-interpolating-video-frames)
-  - [1️⃣ Command-Line Interface (CLI)](#1️⃣-command-line-interface-cli)
-  - [2️⃣ Programmatic API Usage](#2️⃣-programmatic-api-usage)
+**_Saibyo_**[^1] is a **deep learning video frame interpolation library** built on top of **RIFE** and `PyTorch`, enabling fast FPS upscaling, slow-motion generation and visual comparison tools.
 
----
+[^1]: The name comes from stylized Japanese components: **Sai** (彩 / 再), which can evoke “color,” “detail,” or “redo”; and **Byō** (描 / 秒), which can suggest “to draw” or even “second (fps).” Combined, **Saibyo** roughly conveys the idea of “redrawing the seconds,” which aligns perfectly with a system focused on frame interpolation and visual refinement.
 
-## 🔎 Overview
+### What Saibyo offers:
 
-**Saibyo** is a Python library designed to perform video frame interpolation using deep learning techniques. Its primary goal is to enhance the fluidity of videos by generating intermediate frames between existing ones. This is especially useful for applications like:
+- **Easy-to-use CLI and Python API** for video frame interpolation.
+- **Multiple configuration options**: config files, environment variables, direct parameters.
+- **Built-in comparison modes** to visualize interpolation results.
+- **Extensible architecture** for future models and features.
 
-- 🖼️ Smoothing low-FPS footage
-- 🎞️ Creating slow-motion effects
-- 🧪 Preprocessing datasets for computer vision tasks
-- 📊 Comparing videos side-by-side with different visualization modes
 
-### What Saibyo Does
+## 🚀 Installation
 
-- Takes a sequence of video frames as input.
-- Uses a configurable number of intermediate frames per pair, controlled by the `exp` parameter (e.g., `exp=2` → 3 new frames per pair).
-- Outputs an enriched sequence of frames to a specified directory.
-- Supports videos side-by-side comparison with various visualization modes.
-
-### Features
-
-- ✅ Easy-to-use CLI and programmatic APIs.
-- 🧬 Pydantic-based configuration system via `.conf` files or environment variables.
-- ⚙️ Support for batch processing and parallel data loading via `num_workers`.
-- 🎨 Multiple comparison modes: `side_by_side`, `top_bottom`, `split_half_vertical`, `split_half_horizontal`.
-
----
-
-## ⚙️ Setting up `SaibyoConf` variables
-
-Saibyo provides a flexible configuration system powered by **Pydantic Settings**, enabling users to configure interpolation and comparison behavior either through `.conf` files or directly via environment variables.
-
-### 🧬 Configuration Structure in Code
-
-The main configuration model for Saibyo flow is defined in `src/saibyo/conf/conf.py`, the pydantic schema for all Saibyo is defined as follows:
-
-```python
-class SaibyoConf(Conf, BaseSettings):
-    interpolator: InterpolatorConf = Field(default_factory=InterpolatorConf)
-    comparison: ComparisonConf = Field(default_factory=ComparisonConf)
-
-    model_config = SettingsConfigDict(env_prefix="SAIBYO_")
-```
-
-#### _Interpolator Configuration_
-
-The configuration model used by Saibyo for interpolation is defined as follows:
-
-```python
-    class InterpolatorConf(BaseSettings):
-        comparation: bool = Field(default=False, description=COMPARATION_DESCRIPTION)
-        lightweight: bool = Field(default=True, description=LIGHTWEIGHT_DESCRIPTION)
-        exponential: int = Field(default=2, description=EXPONENTIAL_DESCRIPTION)
-
-        model_config = SettingsConfigDict(
-            env_prefix="SAIBYO_INTERPOLATOR_",
-            extra="allow"
-        )
-```
-
-#### _Comparison Configuration_
-
-The configuration model used by Saibyo for video comparison is defined as follows:
-
-```python
-    class ComparatorConf(BaseSettings):
-        text: OverlayTextConf = Field(
-            default_factory=OverlayTextConf
-        )
-        background_color: str = Field(
-            default="#000000",
-            description=BACKGROUND_COLOR_DESCRIPTION
-        )
-        mode: ModeType = Field(
-            default="side_by_side",
-            description=MODE_DESCRIPTION
-        )
-
-        model_config = SettingsConfigDict(
-            env_prefix="SAIBYO_COMPARATOR_",
-            extra="allow"
-        )
-
-    class OverlayTextConf(BaseSettings):
-        overlay: bool = Field(
-            default=True, description=OVERLAY_TEXT_DESCRIPTION
-        )
-        position: TextPositionType = Field(
-            default="top_left", description=TEXT_POSITION_DESCRIPTION
-        )
-
-        model_config = SettingsConfigDict(
-            env_prefix="SAIBYO_COMPARATOR_OVERLAY_TEXT_"
-        )
-```
-
-#### _Interpolator Configuration_
-
-The configuration model used by Saibyo for interpolation is defined as follows:
-
-```python
-    class InterpolatorConf(BaseSettings):
-        comparation: bool = Field(default=False, description=COMPARATION_DESCRIPTION)
-        lightweight: bool = Field(default=True, description=LIGHTWEIGHT_DESCRIPTION)
-        exponential: int = Field(default=2, description=EXPONENTIAL_DESCRIPTION)
-
-        model_config = SettingsConfigDict(
-            env_prefix="SAIBYO_INTERPOLATOR_",
-            extra="allow"
-        )
-```
-
-#### _Comparison Configuration_
-
-The configuration model used by Saibyo for video comparison is defined as follows:
-
-```python
-    class ComparatorConf(BaseSettings):
-        text: OverlayTextConf = Field(
-            default_factory=OverlayTextConf
-        )
-        background_color: str = Field(
-            default="#000000",
-            description=BACKGROUND_COLOR_DESCRIPTION
-        )
-        mode: ModeType = Field(
-            default="side_by_side",
-            description=MODE_DESCRIPTION
-        )
-
-        model_config = SettingsConfigDict(
-            env_prefix="SAIBYO_COMPARATOR_",
-            extra="allow"
-        )
-
-    class OverlayTextConf(BaseSettings):
-        overlay: bool = Field(
-            default=True, description=OVERLAY_TEXT_DESCRIPTION
-        )
-        position: TextPositionType = Field(
-            default="top_left", description=TEXT_POSITION_DESCRIPTION
-        )
-
-        model_config = SettingsConfigDict(
-            env_prefix="SAIBYO_COMPARATOR_OVERLAY_TEXT_"
-        )
-```
-
-### 🔧 Configuration Methods
-
-There are **two ways** to configure Saibyo:
-
-#### 1️⃣ Using `.conf` files
-
-You can load configuration from predefined files located in the `conf/` directory:
-
-```
-conf/
-├── development/
-│   └── application.conf
-└── production/
-    └── application.conf
-```
-
-To select which file is used, you must set the environment variable `ENV`:
+Saibyo has been published to `PyPI` to facilitate easy installation. It can be installed using `pip` command:
 
 ```bash
-export ENV=development
-# or
-export ENV=production
+pip install saibyo
 ```
 
-This tells Saibyo to automatically read the corresponding file under `conf/{ENV}/application.conf`.
+> 📚 For more installation documentation, including optional dependencies and troubleshooting, check out the installation guide located at [`docs/installation.md`](docs/installation.md)
 
-These files define the configuration block for the interpolator, such as:
 
-```yaml
-[interpolator]
-comparation=False
-lightweight=True
-exponential=2
+## ⚡ Quick Usage
 
-[comparator]
-background_color=#100000
-mode=side_by_side
-text.overlay=True
-text.position=bottom_left
-comparation=False
-lightweight=True
-exponential=2
+There are two primary ways to use Saibyo: via the Command Line Interface (CLI) or through the Python API.
 
-[comparator]
-background_color=#100000
-mode=side_by_side
-text.overlay=True
-text.position=bottom_left
-```
+### Command Line Interface (CLI)
 
-#### 2️⃣ Using Environment Variables
-
-You can also configure Saibyo directly via environment variables, without relying on `.conf` files. This is ideal for containerized deployments or CI environments.
-
-The `InterpolatorConf` uses the prefix `SAIBYO_INTERPOLATOR_` while the `ComparatorConf` uses `SAIBYO_COMPARATOR_`. The value and the description of each variable are as follows:
-
-| Environment Variable                         | Description                                                                 | Default       |
-|----------------------------------------------|-----------------------------------------------------------------------------|---------------|
-| `SAIBYO_INTERPOLATOR_COMPARATION`            | If `true`, generates an extra comparison video alongside the interpolated one | `false`       |
-| `SAIBYO_INTERPOLATOR_LIGHTWEIGHT`            | If `true`, uses fp16 inference (faster, less memory, slightly lower quality) | `true`        |
-| `SAIBYO_INTERPOLATOR_EXPONENTIAL`            | Exponent for FPS multiplier (`2 ** exp`) → `1=×2`, `2=×4`, `3=×8`            | `2`           |
-| `SAIBYO_COMPARATOR_BACKGROUND_COLOR`         | Background color in hex (for borders/empty areas in comparison)              | `#000000`     |
-| `SAIBYO_COMPARATOR_MODE`                     | Layout mode: `side_by_side`, `top_bottom`, `split_half_vertical`, `split_half_horizontal` | `side_by_side` |
-| `SAIBYO_COMPARATOR_OVERLAY_TEXT_OVERLAY`     | If `true`, draws overlay text with FPS & filename                           | `true`        |
-| `SAIBYO_COMPARATOR_OVERLAY_TEXT_POSITION`    | Overlay text position: `top_left`, `top_right`, `bottom_left`, `bottom_right` | `top_left`    |
-
-This variables can be set in your shell or in a `.env` file. For example, to set the variables in above table, it can be done as follows:
+Once Saibyo is installed, you can use the `saibyo` command in your terminal to interpolate a video. The basic syntax is as follows:
 
 ```bash
-export SAIBYO_INTERPOLATOR_COMPARATION=true
-export SAIBYO_INTERPOLATOR_LIGHTWEIGHT=true
-export SAIBYO_INTERPOLATOR_EXPONENTIAL=2
-export SAIBYO_COMPARATOR_BACKGROUND_COLOR=#100000
-export SAIBYO_COMPARATOR_MODE=side_by_side
-export SAIBYO_COMPARATOR_OVERLAY_TEXT_OVERLAY=true
-export SAIBYO_COMPARATOR_OVERLAY_TEXT_POSITION=bottom_left
-export SAIBYO_INTERPOLATOR_COMPARATION=true
-export SAIBYO_INTERPOLATOR_LIGHTWEIGHT=true
-export SAIBYO_INTERPOLATOR_EXPONENTIAL=2
-export SAIBYO_COMPARATOR_BACKGROUND_COLOR=#100000
-export SAIBYO_COMPARATOR_MODE=side_by_side
-export SAIBYO_COMPARATOR_OVERLAY_TEXT_OVERLAY=true
-export SAIBYO_COMPARATOR_OVERLAY_TEXT_POSITION=bottom_left
+saibyo interpolate video.mp4 output_directory/
 ```
 
-> #### 🧠 NOTE: Understanding `exp` (exponent)
->
->The `exp` parameter controls how many frames are interpolated between each original pair:
->
->| `exp` | Interpolated Frames | Final Frame Count (per pair) | Multiplier |
->|-------|---------------------|-------------------------------|------------|
->| 1     | 1                   | 2                             | 2×         |
->| 2     | 3                   | 4                             | 4×         |
->| 3     | 7                   | 8                             | 8×         |
->
->This allows flexible fine-tuning between speed and quality depending on the use case.
+By default, the name of the output file will be
+```{original_video_name}_x{fps_multiplier}_{new_fps}.mp4```, where `fps_multiplier` is the factor by which the original FPS is increased.
 
-## 🚀 Usage
+> 📚 For more CLI options and usage examples, refer to the CLI documentation at [`docs/cli.md`](docs/cli.md)
 
-### Interpolating Video Frames
+### Python API
 
-The `interpolate` functionality in Saibyo can be executed in two main ways:
-
-#### 1️⃣ Command-Line Interface (CLI)
-
-Run the interpolation directly using the CLI:
-
-```bash
-python main.py interpolate input_path output_folder
-```
-
-#### 2️⃣ Programmatic API Usage
-
-Invoke the interpolation in your Python code:
+Saibyo can also be integrated into Python scripts for more customized workflows. Here is a simple example of how to use the Python API to interpolate a video:
 
 ```python
+from saibyo.base.conf.app import configure
+from saibyo.conf.conf import SaibyoConf
+from saibyo.constants.app import APP_NAME, ROOT_DIR
+from saibyo.core.interpolation.rife import RifeInterpolator
+
 conf = configure(APP_NAME, ROOT_DIR, SaibyoConf)
 Interpolator(conf).run(
     input_path=input_path,
     output_folder=output_folder,
 )
 ```
+
+> 📚 For more Python API options, refer to the Python API documentation at [`docs/python-api.md`](docs/python-api.md)
+
+## ⚙️ Configuration
+
+By default, Saibyo uses parameters preset in the `Pydantic` configuration schemas located in `saibyo/conf/conf.py`. These parameters can be overridden using:
+
+- Environment variables.
+- Setting values directly to `SaibyoConf` instance.
+
+> 📚 For more detailed configuration options, refer to the configuration documentation at [`docs/configuration.md`](docs/configuration.md)
+
+## 🎨 Comparison Modes
+
+Saibyo includes built-in comparison utilities, allowing users to visualize the differences between the original and interpolated videos. The available comparison modes are:
+
+- side_by_side
+- top_bottom
+- split_half_vertical
+- split_half_horizontal
+
+> 📚 For more detailed comparison mode options, refer to the comparison modes documentation at [`docs/comparison-modes.md`](docs/comparison-modes.md)
+
+## 🗺️ Roadmap
+
+Planned features and improvements for future releases include:
+
+### ONNX inference
+
+Actually, Saibyo uses `PyTorch` for model inference, that makes it less portable to other platforms, more resource-demanding and harder to deploy in cloud environments. `ONNX` is an open format built to represent machine learning models, that allows models to be used across different frameworks and platforms. This feature will enable:
+
+- Lighter models.
+- Easier deployment.
+- Broader compatibility.
+
+### Batching support
+
+Currently, Saibyo processes videos taking one pair of frames at a time, which can be inefficient for longer videos or higher resolutions. Batching support will allow the processing of multiple frame pairs simultaneously, leading to:
+
+- Improved performance.
+- Reduced processing time.
+- Better resource utilization.
+
+### Advanced ML models (IFRNet, FLAVR)
+
+Expanding the range of supported machine learning models for frame interpolation will provide users with more options to choose from, depending on their specific needs and preferences. This will include:
+
+- Integration of state-of-the-art models like IFRNet and FLAVR.
+- Enhanced interpolation quality.
+- More customization options for users.
+
+## 📄 License
+
+Saibyo is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+## 👤 Author emoji
+
+- **Alvaro R.** - [alrodsa](https://github.com/alrodsa)
