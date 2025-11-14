@@ -172,6 +172,6 @@ To optimize storage space and improve video playback performance, Saibyo will in
 
 Saibyo is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
-## 👤 Author emoji
+## 👤 Author
 
 - **Alvaro R.** - [alrodsa](https://github.com/alrodsa)
