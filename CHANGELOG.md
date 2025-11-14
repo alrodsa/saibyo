@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.13.0](https://github.com/alrodsa/saibyo/compare/v0.12.1...v0.13.0) (2025-11-14)
+
+
+### Features
+
+* add Saibyo logo to README.md for enhanced branding ([6ff8921](https://github.com/alrodsa/saibyo/commit/6ff8921e8700fdc3c23dd9ad273976bc62e83519))
+
+
+### Bug Fixes
+
+* update author section in README.md to remove emoji for consistency ([ec33530](https://github.com/alrodsa/saibyo/commit/ec335308a4ce9eb5c1267610f4d0599b1291bacf))
+* update image links in README.md and comparison-modes.md for prop… ([9cdc820](https://github.com/alrodsa/saibyo/commit/9cdc8207b900613cb5290d4ba9c39b32fc8770ce))
+
 ## [0.12.1](https://github.com/alrodsa/saibyo/compare/v0.12.0...v0.12.1) (2025-11-14)
 
 
