@@ -1,4 +1,7 @@
-# 📦 Saibyo — Deep Learning Video Frame Interpolation
+
+![Saibyo Logo](/assets/images/saibyo-logo.png)
+
+
 
 <p align="center">
   <!-- PyPI -->
