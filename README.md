@@ -1,5 +1,7 @@
 
-![Saibyo Logo](/assets/images/saibyo-logo.png)
+![Saibyo Logo](/assets/images/saibyo-logo-light.png#gh-light-mode-only)
+
+![Saibyo Logo Dark](/assets/images/saibyo-logo-dark.png#gh-dark-mode-only)
 
 
 
