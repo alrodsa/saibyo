@@ -37,7 +37,7 @@
 </p>
 
 
-<img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGI4Y2QzaHJhNXV1NmMwY254YTJ4dG5laTIwd3JkZDJ1aTJwaWx3eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WeKp0kIX9PrvhiCUDh/giphy.gif" width="100%"/>
+![Saibyo Demo](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGI4Y2QzaHJhNXV1NmMwY254YTJ4dG5laTIwd3JkZDJ1aTJwaWx3eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WeKp0kIX9PrvhiCUDh/giphy.gif)
 
 > ⚠️ **IMPORTANT:** Above gif could not show the full potential of Saibyo fps boost,
 check out the video for a better understanding in the [YouTube Demo](https://youtu.be/NByIRUQXoUE).
