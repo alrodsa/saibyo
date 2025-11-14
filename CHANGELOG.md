@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.12.1](https://github.com/alrodsa/saibyo/compare/v0.12.0...v0.12.1) (2025-11-14)
+
+
+### Bug Fixes
+
+* update demo image syntax in README.md for proper rendering ([935c851](https://github.com/alrodsa/saibyo/commit/935c8510b7247ac8465fb5135668f307879ebeb1))
+
+
+### Documentation
+
+* update README.md, add CLI and configuration guides, and introduce comparison modes documentation ([89c1535](https://github.com/alrodsa/saibyo/commit/89c1535c6c6b0dd43ce79f80a2a80ef5268fb31c))
+* updated documentation ([25c66da](https://github.com/alrodsa/saibyo/commit/25c66da4dec408aa1ca868db1eb198184b938e6a))
+
 ## [0.12.0](https://github.com/alrodsa/saibyo/compare/v0.11.1...v0.12.0) (2025-11-13)
 
 
