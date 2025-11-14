@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.14.0](https://github.com/alrodsa/saibyo/compare/v0.13.0...v0.14.0) (2025-11-14)
+
+
+### Features
+
+* add light and dark mode logos to README.md for improved visual ([c0c442c](https://github.com/alrodsa/saibyo/commit/c0c442cec2f66adda3b42e019d0101ed96471367))
+* add light and dark mode logos to README.md for improved visual consistency ([444449f](https://github.com/alrodsa/saibyo/commit/444449fb59fccfb110d8780bc6bf7bcf3429b699))
+
 ## [0.13.0](https://github.com/alrodsa/saibyo/compare/v0.12.1...v0.13.0) (2025-11-14)
 
 
