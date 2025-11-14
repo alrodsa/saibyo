@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.12.0](https://github.com/alrodsa/saibyo/compare/v0.11.1...v0.12.0) (2025-11-13)
+
+
+### Features
+
+* add example .env file for Saibyo configuration and update .gitignore to exclude .env files ([286ecf4](https://github.com/alrodsa/saibyo/commit/286ecf493f91b876b25d44b52342d5014ee7138b))
+* add LICENSE file and update license reference in pyproject.toml ([d71cca2](https://github.com/alrodsa/saibyo/commit/d71cca2035aa1c47b69c108b8e9ec254f5ea3c98))
+* add VSCode settings for improved Python development environment ([6cabe1c](https://github.com/alrodsa/saibyo/commit/6cabe1c92571b5f26e9887c5dfeaee7d9bef9043))
+* merge to main ([f47fe6e](https://github.com/alrodsa/saibyo/commit/f47fe6e7e9c2494f7aa3bfcb40da685d822f4676))
+* streamline Dockerfile, add GPU detection script, and enhance post-create script for better environment management ([659a6d0](https://github.com/alrodsa/saibyo/commit/659a6d05eaf51df263b1186a8f707861d007810e))
+
+
+### Bug Fixes
+
+* correct JSON structure in devcontainer configuration files ([0b47af8](https://github.com/alrodsa/saibyo/commit/0b47af86077434164cd577b637b0f8479c093e40))
+* update job name for clarity in release workflow ([697c645](https://github.com/alrodsa/saibyo/commit/697c6451cd417c0d850d6c7f2fc10372ec68cabb))
+* update release-please workflow to correct action usage and param… ([c7d2ae5](https://github.com/alrodsa/saibyo/commit/c7d2ae547c8985e88e702596447eca76e365d138))
+* update release-please workflow to correct action usage and parameters ([fae67a2](https://github.com/alrodsa/saibyo/commit/fae67a2b082a8a2c0fe8e12778610c6f8a9a0392))
+* update token in release workflow to use RELEASE_PLEASE_TOKEN ([0908d45](https://github.com/alrodsa/saibyo/commit/0908d4578c62fe37a84eb5c37341a178fdcc83cd))
+* update token in release workflow to use RELEASE_PLEASE_TOKEN ([4ecb6e0](https://github.com/alrodsa/saibyo/commit/4ecb6e00cbc142a3ca7e05503440a76ce25c9321))
+
 ## [0.11.1](https://github.com/alrodsa/saibyo/compare/v0.11.0...v0.11.1) (2025-08-17)
 
 
